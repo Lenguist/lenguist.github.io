@@ -63,11 +63,21 @@ section h2 {
   font-size: 2em;
 }
 
+
+#profile-photo {
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
 .intro {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 0;
+  margin: 20px auto; /* Adjusts the div to center */
+  max-width: 80%; /* Sets maximum width */
 }
 
 .intro-text {
@@ -77,6 +87,7 @@ section h2 {
 @media (max-width: 600px) {
   .intro {
     flex-direction: column;
+    max-width: 90%; /* Adjusts maximum width for smaller screens */
   }
 
   .intro-text {
@@ -85,11 +96,4 @@ section h2 {
   }
 }
 
-#profile-photo {
-  display: block;
-  margin: auto;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-}
 
