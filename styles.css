@@ -63,3 +63,33 @@ section h2 {
   font-size: 2em;
 }
 
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.intro-text {
+  max-width: 60%;
+}
+
+@media (max-width: 600px) {
+  .intro {
+    flex-direction: column;
+  }
+
+  .intro-text {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+#profile-photo {
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
