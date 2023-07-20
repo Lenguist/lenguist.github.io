@@ -50,3 +50,16 @@ nav ul li a {
 nav ul li a:hover {
   background-color: #111;
 }
+
+
+section {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+}
+
+section h2 {
+  font-size: 2em;
+}
+
