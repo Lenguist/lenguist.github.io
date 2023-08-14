@@ -1,46 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Maksym Bondarenko</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .navbar {
+            background-color: #f3f3f3;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        .section {
+            display: flex;
+            align-items: center;
+            margin: 40px 0;
+        }
+        .section img {
+            max-width: 300px;
+        }
+        .section .text {
+            padding: 0 20px;
+        }
+        .list {
+            list-style-type: disc;
+            padding-left: 40px;
+        }
+    </style>
 </head>
 <body>
-  <nav>
-  <ul>
-    <li><a href="#about-me">About Me</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#blog">Blog</a></li>
-  </ul>
-</nav>
-  <div class="intro">
-  <img src="profile-photo.jpeg" alt="Maksym Bondarenko picture" id="profile-photo">
-  <div class="intro-text">
-    <h1>Welcome to my personal website!</h1>
-    <p>Hi, I'm Maksym! I am an undergraduate student at Columbia University, passionate about AI, startups and deeptech! Welcome to my website!</p>
-  </div>
-</div>
-
-
-  <section id="about-me">
-  <h2>About Me</h2>
-  <!-- Content goes here -->
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <!-- Content goes here -->
-</section>
-
-<section id="research">
-  <h2>Research</h2>
-  <!-- Content goes here -->
-</section>
-
-<section id="blog">
-  <h2>Blog</h2>
-  <!-- Content goes here -->
-</section>
+    <h1>Your Name</h1>
+    <div class="navbar">
+        <a href="#about-me">About Me</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+    </div>
+    <div id="about-me" class="section">
+        <div class="text">
+            <p>Your description goes here.</p>
+        </div>
+        <img src="path/to/your-image.jpg" alt="Your Image">
+    </div>
+    <h2 id="experience">Experience</h2>
+    <!-- Add your experience details here -->
+    <h2 id="research">Research</h2>
+    <ul class="list">
+        <!-- Add your research details here -->
+        <li>Research Item 1</li>
+        <li>Research Item 2</li>
+        <!-- etc. -->
+    </ul>
+    <h2 id="projects">Projects</h2>
+    <ul class="list">
+        <!-- Add your project details here -->
+        <li>Project Item 1</li>
+        <li>Project Item 2</li>
+        <!-- etc. -->
+    </ul>
 </body>
 </html>
