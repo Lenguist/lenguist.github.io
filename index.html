@@ -10,25 +10,24 @@
             margin: 0;
             padding: 20px;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .navbar {
-            background-color: #f3f3f3;
-            overflow: hidden;
+            display: flex;
+            gap: 20px;
         }
         .navbar a {
-            float: left;
-            display: block;
-            text-align: center;
-            padding: 14px 20px;
             text-decoration: none;
             color: #333;
+            padding: 14px 0;
         }
         .section {
             display: flex;
             align-items: center;
             margin: 40px 0;
-        }
-        .section img {
-            max-width: 300px;
         }
         .section .text {
             padding: 0 20px;
@@ -40,18 +39,20 @@
     </style>
 </head>
 <body>
-    <h1>Your Name</h1>
-    <div class="navbar">
-        <a href="#about-me">About Me</a>
-        <a href="#experience">Experience</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
+    <div class="header">
+        <h1>Your Name</h1>
+        <div class="navbar">
+            <a href="#about-me">About Me</a>
+            <a href="#experience">Experience</a>
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+        </div>
     </div>
     <div id="about-me" class="section">
+        <img src="path/to/your-image.jpg" alt="Your Image">
         <div class="text">
             <p>Your description goes here.</p>
         </div>
-        <img src="path/to/your-image.jpg" alt="Your Image">
     </div>
     <h2 id="experience">Experience</h2>
     <!-- Add your experience details here -->
