@@ -1,37 +1,41 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.header h1, h2 {
+    font-family: 'Goldman', cursive;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .navbar a {
-  text-decoration: none;
-  color: #333;
-  padding: 14px 0;
+    text-decoration: none;
+    color: #333;
+    padding: 14px 0;
 }
 
 .section {
-  display: flex;
-  align-items: center;
-  margin: 40px 0;
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
 }
 
 .section .text {
-  padding: 0 20px;
+    padding: 0 20px;
 }
 
 .list {
-  list-style-type: disc;
-  padding-left: 40px;
+    list-style-type: disc;
+    padding-left: 40px;
 }
