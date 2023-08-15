@@ -39,3 +39,15 @@ body {
     list-style-type: disc;
     padding-left: 40px;
 }
+
+.first-name {
+  font-size: 72px; /* Adjust as needed */
+}
+
+.last-name {
+  font-size: 32px; /* Adjust as needed */
+}
+
+.profile-image {
+  width: 500px;
+}
