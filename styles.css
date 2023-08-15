@@ -1,53 +1,67 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 20px;
 }
 
 .header h1, h2 {
-    font-family: 'Goldman', cursive;
+  font-family: 'Goldman', cursive;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .navbar a {
-    text-decoration: none;
-    color: #333;
-    padding: 14px 0;
+  text-decoration: none;
+  color: #333;
+  padding: 14px 0;
 }
 
 .section {
-    display: flex;
-    align-items: center;
-    margin: 40px 0;
+  align-items: center;
+  margin: 40px 0;
+  width: 80%;
+  margin: auto;
+}
+
+#about-me {
+  margin: 40px 0;
+  width: 80%;
+  align-items: center;
+  display:flex;
+  margin: 40px 0;
 }
 
 .section .text {
-    padding: 0 20px;
-}
-
-.list {
-    list-style-type: disc;
-    padding-left: 40px;
+  padding: 0 20px;
 }
 
 .first-name {
-  font-size: 72px; /* Adjust as needed */
+  font-size: 72px;
 }
 
 .last-name {
-  font-size: 32px; /* Adjust as needed */
+  font-size: 32px;
 }
 
 .profile-image {
-  width: 500px;
+  width: 250px;
+}
+
+.item {
+  display: block;
+  clear: both;
+  margin: 10px 0;
+}
+
+.date {
+  float: right;
 }
