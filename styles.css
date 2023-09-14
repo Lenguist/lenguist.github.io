@@ -4,6 +4,7 @@ body {
   padding: 20px;
 }
 
+
 .header h1, h2 {
   font-family: 'Goldman', cursive;
 }
@@ -65,3 +66,36 @@ body {
 .date {
   float: right;
 }
+
+
+/* Projects Section Styles */
+#Projects a {
+  color: #000;
+  text-decoration: none;
+}
+
+#Projects a:hover {
+  color: #b0b0b0;
+}
+
+/* ... other styles ... */
+
+p a {
+  color: #4d4d4d; /* Set the color to a light gray */
+  text-decoration: none; /* Remove the underline */
+  border-bottom: 1px dotted #808080; /* Add a dotted bottom border */
+  font-weight: normal; /* Keep the text normal weight */
+}
+
+p a:hover {
+  color: #333333; /* Set the color to a much darker gray when hovered over */
+  border-bottom: 1px dotted #333333; /* Change the border color to match the hover color */
+  font-weight: bold; /* Make the text bold on hover */
+}
+
+/* ... other styles ... */
+
+
+
+
+
