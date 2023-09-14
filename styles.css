@@ -1,101 +1,135 @@
+/* Global Styles */
 body {
-  font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  padding: 20px;
+  font-family: 'Courier New', Courier, monospace; /* Set the global font family */
+  margin: 0; /* Remove the default margin */
+  padding: 20px; /* Add padding around the body */
+  max-width: 1200px; /* Set a maximum width for the body */
+  margin: auto; /* Center the content within the body */
 }
 
-
-.header h1, h2 {
-  font-family: 'Goldman', cursive;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/* Navbar Styles */
 .navbar {
-  display: flex;
-  gap: 20px;
+  display: flex; /* Use flexbox for the navbar layout */
+  gap: 20px; /* Set space between navbar items */
 }
 
 .navbar a {
-  text-decoration: none;
-  color: #333;
-  padding: 14px 0;
+  text-decoration: none; /* Remove underlines from navbar links */
+  color: #333; /* Set the color of navbar links */
+  padding: 14px 0; /* Add vertical padding to navbar links */
 }
 
+/* Section Styles */
 .section {
-  align-items: center;
-  margin: 40px 0;
-  width: 80%;
-  margin: auto;
-}
-
-#about-me {
-  margin: 40px 0;
-  width: 80%;
-  align-items: center;
-  display:flex;
-  margin: 40px 0;
+  align-items: center; /* Vertically align section items */
+  margin: 40px 0; /* Add vertical margin to sections */
+  width: 80%; /* Set the width of sections */
+  margin-right:5%;
+  margin: auto; /* Center the sections */
+  margin-bottom: 60px;
 }
 
 .section .text {
-  padding: 0 20px;
+  padding: 0 20px; /* Add horizontal padding to the text inside sections */
 }
 
-.first-name {
-  font-size: 72px;
-}
-
-.last-name {
-  font-size: 32px;
-}
-
-.profile-image {
-  width: 250px;
-}
-
+/* Item Styles */
 .item {
-  display: block;
-  clear: both;
-  margin: 10px 0;
+  display: block; /* Make items block level elements */
+  clear: both; /* Clear floats */
+  margin: 0; /* Add vertical margin to items */
+  padding: 0;
+}
+
+.item p{
+  margin:10px;
 }
 
 .date {
-  float: right;
+  float: right; /* Float date text to the right */
+  margin-right:40px;
 }
 
-
-/* Projects Section Styles */
-#Projects a {
-  color: #000;
-  text-decoration: none;
-}
-
-#Projects a:hover {
-  color: #b0b0b0;
-}
-
-/* ... other styles ... */
-
+/* Styles for links in paragraph tags */
 p a {
-  color: #4d4d4d; /* Set the color to a light gray */
-  text-decoration: none; /* Remove the underline */
-  border-bottom: 1px dotted #808080; /* Add a dotted bottom border */
-  font-weight: normal; /* Keep the text normal weight */
+  color: #4d4d4d; /* Set the color for links */
+  text-decoration: none; /* Remove the underline from links */
+  border-bottom: 1px dotted #808080; /* Add a dotted border to links */
 }
 
 p a:hover {
-  color: #333333; /* Set the color to a much darker gray when hovered over */
-  border-bottom: 1px dotted #333333; /* Change the border color to match the hover color */
-  font-weight: bold; /* Make the text bold on hover */
+  color: #333333; /* Darker color for hovered links */
+  border-bottom: 1px dotted #333333; /* Darker border for hovered links */
+  font-weight: bold; /* Make links bold on hover */
 }
 
-/* ... other styles ... */
+/* Specific Section Styles */
+#education .item, #experience .item, #projects .item {
+  margin-left: 30px; /* Add left margin to create a stepped effect */
+}
 
+/* Styles for the projects section */
+#projects a {
+  color: #000; /* Set the color for links in the projects section */
+  text-decoration: none; /* Remove the underline from links in the projects section */
+  border-bottom: 2px dotted; /* Add a dotted border to links */
+}
 
+#projects a:hover {
+  color: #b0b0b0; /* Set a lighter color for links on hover in the projects section */
+}
 
+/* About Me Section Styles */
+#about-me {
+  display: flex; /* Use flexbox for the layout */
+  width: 78%; /* Set the width to 100% */
+  text-align: justify; /* Justify the text */
+  margin-top:0;
+  margin-bottom:0;
+}
 
+#about-me .text{
+  font-size: 14px;
+  padding:12px;
 
+}
+
+.first-name {
+  font-size: 72px; /* Set a large font size for the first name */
+}
+
+.last-name {
+  font-size: 32px; /* Set a smaller font size for the last name */
+}
+
+#about-me .profile-image {
+  width: 400px; /* Set the width for the profile image */
+  height: 350px;
+  margin-left: 0; /* Remove left margin */
+  padding-left: 0; /* Remove left padding */
+}
+
+/* Header Styles */
+.header {
+  display: flex; /* Use flexbox for the header layout */
+  justify-content: space-between; /* Distribute space evenly between the header items */
+  align-items: center; /* Vertically align the header items */
+  margin-left:10%;
+}
+
+h1, h2 {
+  font-family: 'Goldman', cursive; /* Set a special font family for h1 and h2 in the header */
+}
+
+h2 {
+  font-size:30px;
+}
+
+.indented-quote {
+  margin: 5px 0;
+  padding:0;
+  font-size:13px;
+  padding-left: 160px; /* Adds padding on the left to create an indent */
+  color: #808080; /* Makes the text less prominent by using a lighter color */
+  font-style: italic; /* Optional: Makes the text italicized */
+}
