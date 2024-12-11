@@ -1,119 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Maksym Bondarenko</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Goldman&display=swap">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Goldman&family=Audiowide&display=swap"/>
 </head>
 <body>
-<div class="header">
-      <h1><span class="first-name">maksym</span> <span class="last-name">bondarenko</span></h1>
-        <!-- <div class="navbar">
-            <a href="#about-me">About Me</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Education</a>
-            <a href="#research">Projects</a>
-            <a href="#projects">Researc</a>
-        </div> -->
-</div>
-<div id="about-me" class="section">
+    <div class="header">
+        <h1><span class="first-name">maksym</span> <span class="last-name">bondarenko</span></h1>
+        <pre class="ascii-bar">
+---------------------------------------------
+| <a href="index.html">About me</a> | <a href="research.html">Research</a> | <a href="projects.html">Projects</a> | <a href="thoughts.html">Thoughts</a> |
+---------------------------------------------
+        </pre>
+    </div>
+
+    <div id="about-me" class="section">
         <img class="profile-image" src="profile.png" alt="Profile image">
         <div class="text">
             <div class="indented-quote">
-            <p>we taught magic sand to do linear algebra and now it can think (maybe)</p>
+                <p>we taught magic sand to do linear algebra and now it can think (maybe)</p>
             </div>
             <div class="indented-quote">
-            <p>"went from ai agnostic to ai religious" - people after talking to me</p>
+                <p>"went from ai agnostic to ai religious" - people after talking to me</p>
             </div>
             <p>Hi! I am Maksym, currently a Computer Engineering student at Columbia University,
-                coming from Kyiv, Ukraine.
-                I am passionate about AI, engineering of all kinds, startups, and deep tech.
-            <p>I am in awe with civilizational progress, and I belive one of the best way to accelerate it
-                is to enable more human productivity through expanding access to education, AI tools and mentorship.</p>
-            <p>
-                Previously, I have started <a href="https://www.pravopysnyk.com/">Pravopysnyk</a>, AI grammar correction service for Ukrainian.
-                My team and I built it while in high school, self-learning skills from full stack web dev to NLP along the way.
-                Currently interested in exploring how high is the creative ceiling of curent generation of AI models: AI movie generation, autonomous AI research and long-form AI narrative generation.</p>
+                coming from Kyiv, Ukraine.</p>
+            <p>I am passionate about AI, hardware, startups and deep tech.</p>
+            <p>Previously, I have started <a href="https://www.pravopysnyk.com/">Pravopysnyk</a>,
+                AI grammar correction service for Ukrainian,
+                published <a href="https://www.pravopysnyk.com/">research</a>, and worked on cool
+                <a href="https://www.pravopysnyk.com/">hardware projects.</a></p>
+            <p>Currently exploring <a href="https://www.pravopysnyk.com/">LLM memory</a> and ways to productize <a href="https://www.pravopysnyk.com/">general robotics.</a></p>
         </div>
-</div>
-
-<div class="section" id="education">
-    <h2>Education</h2>
-      <div class="item">
-        <h3>Columbia University, 2022-2026</h3>
-          <p>Majoring in computer engineering, with a heavy focus on AI.</p>
-          <p>Active participant in Mathematical Modelling, Ukrainian club, Deep Learning Theory, and Trasnformers reading groups.</p>
-      </div>
-      <div class="item">
-          <h3>Princeton University, 2021-2022</h3>
-          <p>Took Machine Leaning and Machine Translation (NLP) as a high school senior.</p>
-      </div>
-      <div class="item">
-          <h3>Lawrenceville School, 2019-2022</h3>
-          <p>Received full-ride 210,000 scholarship to attend. Graduated Cum Laude.</p>
-      </div>
-</div>
-
-<div class="section" id="experience">
-    <h2>Experience</h2>
-    <div class="item">
-        <h3>Research Assistant, Columbia NLP Group, 2023-present</h3>
-        <p>Working on zero-shot book summarization under Melanie Subbiah (ongoing).</p>
-        <p>Implemented 8 different evaluation metrics (QAFactEval, SNAC, and others) to evaluate summary generation.</p>
     </div>
-    <div class="item">
-        <h3>Researcher and Competitor, Columbia Math Modelling, 2022-present</h3>
-        <p>Selected to participate in Summer Research in Mathematical Modeling (CSUREMM) - a ten-week, NSF-funded program for collaborative research in mathematical modeling.</p>
-        <p>Mathematical Contest in Modeling Outstanding Paper and MAA Award Winner.</p>
-    </div>
-    <div class="item">
-        <h3>Co-Founder and Lead Developer, Pravopysnyk, 2020-present</h3>
-        <p>We built the first ever AI-powered grammatical error correction tool for Ukrainian language.</p>
-        <p>Led research efforts, designed synethtic data generation pipeline (50x increase in training data), developed all model architecture, first in AllenNLP, later in Pytorch.</p>
-        <p>Developed initial version of frontend for realtime editor and backend infrasturcture using HTML+CSS, JS, Flask, AWS and MySQL</p>
-        <p>We have won the <a href="https://codalab.lisn.upsaclay.fr/competitions/10740#participate">UNLP shared task competition in Grammar Correciton</a> and received Best Paper award for <a href="https://aclanthology.org/2023.unlp-1.13/">our publication at UNLP workshop at EACL</a>.</p>
-        <p>Led and organized a fully remote and asyncrhonous team of 11 programmers and linguists scattered across 4 timezones.</p>
-    </div>
-</div>
 
-  <div class="section" id="projects">
-  <h2>Projects</h2>
-  <div class="item">
-    <h3><a href="projects/CSUREMM_insight copy.pdf">
-        INSIGHT: Intelligent Negotiation Strategy
-        for Information Games with Hidden Tactics</a></h3>
-    <p>Developed a bilateral negotiation framework and employed reinforcement learning  to create an AI agent that outperformed existing heuristic models in achieving optimal bids and maximizing profits.</p>
-</div>
-  <div class="item">
-    <h3><a href="projects/MCM_2023 copy.pdf">
-        Is There Space for More? A Spatiotemporal Partial Differential
-        Equations Model for Plant Growth During Drought Cycles</a></h3>
-    <p>Used differential equations to model drought effects of plant communities of varying diversity. Received MAA award in MCM competition.</p>
-</div>
-<div class="item">
-    <h3><a href="projects/YanBondarenkoLinCMCC2023Paper.pdf">
-        Divide and Conquer: Multi-model Approach to Biking Infrastructure</a></h3>
-    <p>Developed a model for bike infrastructure budget allocation in NYC using openly available data.</p>
-</div>
-  <div class="item">
-    <h3><a href="projects/project-final copy.pdf">
-        Support Vector Machines for binary classification</a></h3>
-    <p>Formal mathematical analysis of Support Vector Machines for Honors Math class at Columbia.</p>
-</div>
-<div class="item">
-    <h3><a href="projects/granular.pdf">
-        Fluid-like Properties of Oscillation Driven Granular Material in Connected Vessels</a></h3>
-    <p>Completed while in Lawrenceville School, analyzed how small-grained sand behaves like a fluid when oscillated.</p>
-</div>
-</div>
-<div class="section" id="other">
-<h2 id="stuff">My favorite things</h2>
-<ul>
-    <li>Coming soon!</li>
-</ul>
-</div>
+    <div class="section">
+        <h2 class="section-title">Life updates</h2>
+        <p>
+            <strong>November 2024</strong> Became <a href="#">Neo scholar</a> for 2025 cohort!<br><br>
+            <strong>August 2024</strong> Completed computer vision internship at a robotics startup<br>
+            as where I was one of the first 30 employees<br><br>
+            <strong>July 2024</strong> Presented <a href="#">EraseDraw</a> research at AI for content creation at CVPR<br><br>
+            <strong>Jan 2024</strong> Won 10000$ prize at NYC hackathon organized by Sebastian Thrun<br><br>
+            <strong>Oct 2023</strong> Won Harvard Hack with <a href="#">Giraffe.ai</a><br><br>
+            <strong>August 2023</strong> Completed collaboration with Melanie Subbiah on long document summarization<br><br>
+            <strong>May 2023</strong> Won Best Paper Award at EACL2023 for work on <a href="#">Ukrainian Grammar Correction</a>
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-links">
+            <span><a href="#">LinkedIn</a></span>
+            <span><a href="#">GitHub</a></span>
+            <span><a href="#">Email</a></span>
+        </div>
+    </div>
 </body>
 </html>

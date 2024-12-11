@@ -1,139 +1,221 @@
-/* Global Styles */
 body {
-  font-family: 'Courier New', Courier, monospace; /* Set the global font family */
-  margin: 0; /* Remove the default margin */
-  padding: 20px; /* Add padding around the body */
-  max-width: 1200px; /* Set a maximum width for the body */
-  margin: auto; /* Center the content within the body */
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex; /* Use flexbox for the navbar layout */
-  gap: 20px; /* Set space between navbar items */
-}
-
-.navbar a {
-  text-decoration: none; /* Remove underlines from navbar links */
-  color: #333; /* Set the color of navbar links */
-  padding: 14px 0; /* Add vertical padding to navbar links */
-}
-
-/* Section Styles */
-.section {
-  align-items: center; /* Vertically align section items */
-  margin: 40px 0; /* Add vertical margin to sections */
-  width: 80%; /* Set the width of sections */
-  margin-right:5%;
-  margin: auto; /* Center the sections */
-  margin-bottom: 60px;
-}
-
-.section h3{
-  margin-bottom:8px;
-  margin-top:36px;
-}
-
-.section .text {
-  padding: 0 20px; /* Add horizontal padding to the text inside sections */
-}
-
-/* Item Styles */
-.item {
-  display: block; /* Make items block level elements */
-  clear: both; /* Clear floats */
-  margin: 0; /* Add vertical margin to items */
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
   padding: 0;
-  width:85%
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* so we can position the cat relative to body */
 }
 
-.item p{
-  margin:8px;
-}
-
-.date {
-  float: right; /* Float date text to the right */
-  margin-right:40px;
-}
-
-/* Styles for links in paragraph tags */
-p a {
-  color: #4d4d4d; /* Set the color for links */
-  text-decoration: none; /* Remove the underline from links */
-  border-bottom: 1px dotted #808080; /* Add a dotted border to links */
-}
-
-p a:hover {
-  color: #333333; /* Darker color for hovered links */
-  border-bottom: 1px dotted #333333; /* Darker border for hovered links */
-  font-weight: bold; /* Make links bold on hover */
-}
-
-/* Specific Section Styles */
-#education .item, #experience .item, #projects .item {
-  margin-left: 30px; /* Add left margin to create a stepped effect */
-}
-
-/* Styles for the projects section */
-#projects a {
-  color: #000; /* Set the color for links in the projects section */
-  text-decoration: none; /* Remove the underline from links in the projects section */
-  border-bottom: 2px dotted; /* Add a dotted border to links */
-}
-
-#projects a:hover {
-  color: #b0b0b0; /* Set a lighter color for links on hover in the projects section */
-}
-
-/* About Me Section Styles */
-#about-me {
-  display: flex; /* Use flexbox for the layout */
-  width: 78%; /* Set the width to 100% */
-  text-align: justify; /* Justify the text */
-  margin-top:0;
-  margin-bottom:0;
-}
-
-#about-me .text{
-  font-size: 14px;
-  padding:12px;
-
+.header {
+  display: flex;
+  align-items: flex-end; /* align bottom of elements */
+  justify-content: space-between;
+  margin: 20px;
 }
 
 .first-name {
-  font-size: 72px; /* Set a large font size for the first name */
+  font-family: 'Goldman', sans-serif;
+  font-size: 72px;
+  text-transform: lowercase;
 }
 
 .last-name {
-  font-size: 32px; /* Set a smaller font size for the last name */
+  font-family: 'Audiowide', cursive;
+  font-size: 32px;
+  text-transform: lowercase;
 }
 
-#about-me .profile-image {
-  width: 400px; /* Set the width for the profile image */
+.ascii-bar {
+  font-family: monospace;
+  font-size: 14px;
+  color: #333;
+  white-space: pre;
+  margin-right: 100px; /* Defines the rightmost reference line */
+  line-height: 1.2;
+}
+
+.ascii-bar a {
+  text-decoration: none;
+  color: #333;
+}
+
+.section {
+  margin: 80px 0;
+}
+
+.section-title {
+  font-family: 'Goldman', sans-serif;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p a {
+  color: #4d4d4d;
+  text-decoration: none;
+  border-bottom: 1px dotted #808080;
+}
+
+p a:hover {
+  color: #333333;
+  border-bottom: 1px dotted #333333;
+  font-weight: bold;
+}
+
+.profile-image {
+  width: 400px;
   height: 350px;
-  margin-left: 0; /* Remove left margin */
-  padding-left: 0; /* Remove left padding */
+  border: 2px dashed #666;
+  margin-left:20px;
 }
 
-/* Header Styles */
-.header {
-  align-items: center; /* Vertically align the header items */
-  margin-left:10%;
+#about-me {
+  display: flex;
+  width: 90%;
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-h1, h2 {
-  font-family: 'Goldman'; /* Set a special font family for h1 and h2 in the header */
-}
-
-h2 {
-  font-size:30px;
+#about-me .text {
+  font-size: 14px;
+  padding: 12px;
+  padding-left:60px;
 }
 
 .indented-quote {
   margin: 5px 0;
-  padding:0;
-  font-size:13px;
-  padding-left: 160px; /* Adds padding on the left to create an indent */
-  color: #808080; /* Makes the text less prominent by using a lighter color */
-  font-style: italic; /* Optional: Makes the text italicized */
+  padding: 0;
+  font-size: 13px;
+  padding-left: 160px;
+  color: #808080;
+  font-style: italic;
+}
+
+/* Contact Links */
+.contact-links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px dotted #333;
+}
+
+.contact-links a:hover {
+  font-weight: bold;
+}
+
+/* Research page styling */
+.research-intro-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.research-text {
+  width: 50%;
+  padding: 20px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+/* Make the image line up with the rightmost edge of the navbar */
+.research-image-placeholder {
+  width: 400px;
+  height: 300px;
+  border: 2px dashed #666;
+  display: block;
+  float: right;
+  margin-right: 100px; /* aligns right edge with navbar */
+  color: #666;
+}
+
+.research-item {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.research-item-image {
+  width: 200px;
+  height: 150px;
+  border: 2px dashed #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.research-item-text {
+  flex: 1;
+  font-size: 14px;
+}
+
+/* Thoughts page styling */
+/* Position the cat so its right edge aligns with navbar's right edge */
+.cat-container {
+  position: absolute;
+  bottom: 20px;
+  right: 100px; /* Align cat's right edge with navbar */
+}
+
+.cat-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.ascii-cat {
+  font-family: 'Audiowide', cursive;
+  font-size: 10px; /* smaller font to ensure fits */
+  white-space: pre;
+  color: black;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Projects page styling */
+.project-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.project-card {
+  border: 2px dashed #666;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.project-image {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-family: 'Goldman', sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  font-size: 14px;
+  text-align: justify;
+  margin: auto;
+  max-width: 90%;
 }
