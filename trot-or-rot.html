@@ -3,64 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trot or Rot: Survival of the Fittest Hill Climber Algorithm for Real Robots</title>
-    <link rel="stylesheet" href="template.css">
+    <title>Trot or Rot: Teaching a Quadruped Robot to Walk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header .subtitle {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        header .links {
+            margin-top: 20px;
+        }
+
+        header .links a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .image-placeholder {
+            background: #eee;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .code-block {
+            background: #f6f8fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .note {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #007BFF;
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Trot or Rot: Building a quadruped robot from scratch and teaching it to walk!</h1>
-        <p class="subtitle">Subtitle coming here</p>
+        <h1>Trot or Rot: Building a Quadruped Robot from Scratch</h1>
+        <p class="subtitle">Learning Mechanical Engineering Through Trial and Error</p>
         <div class="links">
-            <a href="https://github.com/Lenguist/trot-or-rot">Code</a>
-            <a href="projects/trot-or-rot/trot_or_rot.pdf">Paper</a>
+            <a href="https://github.com/Lenguist/trot-or-rot">Simulation Code</a>
+            <a href="projects/trot-or-rot/trot_or_rot.pdf">Simulation Paper</a>
             <a href="#">Video</a>
+            <a href="#">Full Replication Guide (Coming Soon!)</a>
         </div>
     </header>
+
     <main>
-        <div class="figure">
-            <div class="rectangle">
-                <img src="projects/trot-or-rot/title-figure.jpg" alt="Photo of our robot">
-            </div>
+        <div class="image-placeholder">
+            Title Figure: Final Robot
         </div>
+
         <section>
-            <h2>Introduction</h2>
-            <p>Text coming soon.</p>
+            <h2>TL;DR</h2>
+            <p>We built a quadruped robot from scratch, simulated it in PyBullet, and taught it to walk using a hill climber algorithm. In essence, this is what happens when you take two software engineers and throw them into a hardware project. Spoiler alert: it worked!</p>
         </section>
+
         <section>
-            <h2>Key Features</h2>
+            <h2>Project Overview & Motivation</h2>
+            <p>When we started this project, I hadn't touched CAD software or a 3D printer before. My partner had a bit more experience, but it was definitely a learning experience. We wanted to see how far we could get learning mechanical engineering through a hands-on project.</p>
+
+            <p>The project came with some key constraints:</p>
             <ul>
-                <li>Simple evolutionary algorithm for gait optimization</li>
-                <li>Parallelized implementation for faster convergence</li>
-                <li>Complete PyBullet simulation environment</li>
-                <li>Comprehensive performance analysis and optimization</li>
-                <li>Beginner-friendly codebase and documentation</li>
+                <li>Robot must use legged locomotion (no wheels allowed)</li>
+                <li>Limited to 8 specific motors</li>
+                <li>One designated battery type</li>
+                <li>Must use an onboard Raspberry Pi</li>
             </ul>
+
+            <p>Given our limited mechanical engineering experience, we chose to build something we understood conceptually - a quadruped robot similar to Boston Dynamics' Spot, but obviously much simpler. This let us focus on learning the fundamental skills without getting lost in complex mechanical design.</p>
         </section>
+
         <section>
-            <h2>Implementation</h2>
-            <p>We provide a complete open-source implementation including:</p>
+            <h2>Technical Implementation</h2>
+            
+            <h3>Design & CAD</h3>
+            <p>We started with ambitious plans - initially wanting to build a robotic horse archer with targeting systems and cool ML capabilities. Reality quickly set in, and we scaled back: first to a Nerf gun, then to a water cannon, and finally to just focusing on getting the basic robot to walk.</p>
+
+            <p>We ended up "forking" from an existing open-source quadruped robot project, adapting it for our specific motors and battery constraints. The main challenge was optimizing for lower weight while maintaining stability. We started in SolidWorks but switched to Fusion360 for better collaboration and laptop compatibility.</p>
+            
+            <div class="image-placeholder">
+                Design Evolution & CAD Progression
+            </div>
+
+            <h3>Parts & Assembly</h3>
+            <p>This phase taught us a lot about hardware development bottlenecks. Long lead times for parts became a major constraint - for example, waiting a week for the correct length servo horn. We had several prints that either didn't fit the motors as intended or failed outright, each setback costing days of development time.</p>
+            
+            <p>Key learning: Experience helps anticipate these setbacks. Precise CAD work, ordering backup parts, and structuring development to avoid single-part bottlenecks became crucial strategies.</p>
+
+            <h3>Simulation</h3>
+            <p>After accidentally pushing the motors beyond their limits and breaking a leg (oops), we shifted focus to simulation. We chose PyBullet for its simplicity and sufficiency for our needs. The simulation provided two key benefits:</p>
             <ul>
-                <li>PyBullet simulation environment for testing and parameter tuning</li>
-                <li>Hardware integration scripts for physical robot deployment</li>
-                <li>Configuration files for hyperparameter adjustment</li>
-                <li>Detailed documentation and setup guides</li>
+                <li>Safe environment for testing without breaking hardware</li>
+                <li>Faster iteration on walking gaits (5 iterations per second, each testing 12 seconds of walking)</li>
             </ul>
+
+            <p>Getting our CAD model into PyBullet was surprisingly challenging. The URDF format requires careful handling of links and joints, and parallel drive mechanisms proved particularly tricky. We eventually found a script that could automatically convert properly formatted assemblies into URDF format.</p>
+
+            <div class="note">
+                <h4>Technical Implementation:</h4>
+                <p>We implemented a hill climbing algorithm for gait optimization with the following key components:</p>
+                <ul>
+                    <li>Gait parameters: frequency (ω), amplitude (a), phase offset (b), and vertical offset (c)</li>
+                    <li>Fixed simulation duration (10 seconds) with 0.5s settling time</li>
+                    <li>Fitness metric: forward distance traveled</li>
+                    <li>Parallel evaluation of multiple candidates per iteration</li>
+                </ul>
+            </div>
+
+            <p>Each simulation run evaluates a candidate gait at 240 Hz simulation steps. We found that while longer simulation durations (20s+) provide more stable evaluations, they significantly increase computational cost. Our current implementation balances evaluation stability with iteration speed.</p>
+
+            <h3>Walking Implementation</h3>
+            <p>We implemented a simple hill climbing algorithm for gait optimization. The simulation environment let us test various parameters and gaits without risking the physical hardware. Full implementation details and code are available in our GitHub repository.</p>
         </section>
+
         <section>
             <h2>Results</h2>
-            <p>Our experiments demonstrate that:</p>
-            <ul>
-                <li>The algorithm achieves stable walking gaits with minimal computational resources</li>
-                <li>Parallelization reduces optimization time by up to 60%</li>
-                <li>Performance scales well with iteration count and simulation duration</li>
-                <li>The approach is robust enough for real-world deployment</li>
-            </ul>
+            <p>[Coming soon! Videos and performance metrics of our robot in action.]</p>
+            <div class="image-placeholder">
+                Walking Demo Video
+            </div>
         </section>
+
         <section>
-            <h2>Acknowledgements</h2>
-            <p>We thank our mentors, peers, and contributors who made this project possible.</p>
+            <h2>Discussion & Reflections</h2>
+            <p>One key question we had was "How different is building a hardware project from a software project?" The answer: quite different in some ways. Many steps only make sense sequentially, and it's harder to break things into independent modules.</p>
+
+            <p>In software, you can typically parallelize work and get quick feedback (run the module, fix issues, repeat). Hardware development has longer feedback loops - you need the design before ordering parts, you need parts before testing assembly fit, and some issues only become apparent once you have physical components in hand.</p>
+
+            <p>What we wish we had: better ways to close the feedback loop sooner. Some of this might come from experience and better development processes, but it seems fundamental to hardware development that some things just take time to validate.</p>
         </section>
     </main>
+
     <footer>
         <p>Columbia University 2024</p>
     </footer>
