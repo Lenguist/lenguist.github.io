@@ -265,3 +265,10 @@ p a:hover {
 }
 
 
+.project-card-grid a,
+.project-card-grid a:visited,
+.project-card-grid a:hover,
+.project-card-grid a:active {
+  text-decoration: none !important;
+  color: #333 !important;
+}
