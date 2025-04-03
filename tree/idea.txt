@@ -1,0 +1,13 @@
+and you knw the annotation to al fof that as you progrress through the image is
+my edge is i studied everythign
+i have unparallel breadth
+so when the time comes to execute I can hit the ground running
+find connections that others miss
+and pick up new skills quickly
+
+
+anyway try to generate a version of that. start withgenerating the "tree" or network or whatever you call in in plain text 
+
+then show which final "projects" are connected with which vertcies from prev layer
+
+then i will ask you to do more code for it. dont do it now yet

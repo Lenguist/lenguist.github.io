@@ -1,0 +1,61 @@
+ROOT: Foundational Domains
+│
+├── Computer Science
+│   ├── Artificial Intelligence & Machine Learning
+│   │   ├── Machine Learning Fundamentals
+│   │   │   ├── Supervised Learning
+│   │   │   └── Unsupervised Learning
+│   │   ├── Deep Learning
+│   │   │   ├── Neural Networks
+│   │   │   └── Reinforcement Learning
+│   │   ├── Natural Language Processing
+│   │   │   ├── Grammar Correction & Summarization
+│   │   │   └── Language Generation
+│   │   └── Computer Vision
+│   │       ├── Image Processing
+│   │       └── Object Detection & Generative Models
+│   │
+│   ├── Software Engineering
+│   │   ├── Full-Stack Development
+│   │   │   ├── Front-End (HTML, CSS, JS)
+│   │   │   └── Back-End (Flask, Docker, AWS)
+│   │   ├── Systems Programming
+│   │   │   ├── C/C++ Programming
+│   │   │   └── Kernel & Embedded Systems
+│   │   └── Cloud & DevOps
+│   │       ├── Containerization
+│   │       └── Continuous Integration/Deployment
+│   │
+│   └── Algorithms & Data Structures
+│       ├── Fundamental Data Structures
+│       └── Optimization Techniques & Complexity Analysis
+│
+├── Electrical Engineering
+│   ├── Circuit Analysis
+│   │   ├── Analog Circuit Design
+│   │   └── Digital Circuit Design
+│   ├── Embedded Systems
+│   │   ├── Firmware Development
+│   │   └── Sensor Integration & Signal Acquisition
+│   └── Signal Processing & Communication
+│       ├── Filtering Techniques
+│       └── Communication Protocols
+│
+├── Mechanical Engineering
+│   ├── Robotics & Automation
+│   │   ├── Locomotion & Control Systems
+│   │   └── Mechatronics Integration
+│   ├── Mechanical Design & Simulation
+│   │   ├── CAD Modeling (e.g., Fusion360)
+│   │   └── Simulation Tools (e.g., PyBullet)
+│   └── Dynamics & Kinematics
+│       ├── Static & Dynamic Analysis
+│       └── Motion Planning
+│
+└── Mathematics
+    ├── Applied Mathematics
+    │   ├── Optimization & Numerical Methods
+    │   └── Differential Equations
+    └── Theoretical & Discrete Mathematics
+        ├── Abstract Algebra & Number Theory
+        └── Statistics, Probability & Graph Theory
