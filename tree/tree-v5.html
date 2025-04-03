@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Improved Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    /* Full page usage */
+    html, body {
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden;
+    }
+    svg {
+      width: 100%; 
+      height: 100%;
+    }
+    .node circle {
+      fill: #999;
+      stroke: steelblue;
+      stroke-width: 3px;
+    }
+    .node text {
+      font: 12px sans-serif;
+      fill: #fff;  /* White text inside dark-ish circle */
+      pointer-events: none; /* Let mouse events pass through text to circle */
+    }
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 2px;
+    }
+    .extra-link {
+      fill: none;
+      stroke: #aaa;
+      stroke-width: 2px;
+      stroke-dasharray: 4 2;
+    }
+    .highlight {
+      stroke: orange;
+      stroke-width: 4px;
+    }
+  </style>
+</head>
+<body>
+<svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"></svg>
+<script>
+  // 1. A dictionary to shorten long labels.
+  const shortNames = {
+    "ROOT: Foundational Domains": "ROOT",
+    "Computer Science": "CS",
+    "Artificial Intelligence & Machine Learning": "AI/ML",
+    "Machine Learning Fundamentals": "ML Fund.",
+    "Supervised Learning": "Supervised",
+    "Unsupervised Learning": "Unsupervised",
+    "Clustering (K-Means, Hierarchical, DBSCAN)": "Clustering",
+    "Dimensionality Reduction (PCA, t-SNE, UMAP)": "Dim Reduce",
+    "Semi-Supervised Learning": "Semi-Supervised",
+    "Self-training Methods": "Self-train",
+    "Co-training Approaches": "Co-train",
+    "Deep Learning": "Deep Learning",
+    "Neural Networks": "Neural Nets",
+    "Feedforward Networks": "Feedforward",
+    "Convolutional Neural Networks": "CNNs",
+    "Image Classification": "Image Class",
+    "Object Detection": "Object Det",
+    "Recurrent Neural Networks": "RNNs",
+    "Sequence Modeling": "Seq Model",
+    "Reinforcement Learning": "RL",
+    "Tabular Methods": "Tabular",
+    "Model-Based Evaluation": "Model-Based",
+    "Model-Free Evaluation": "Model-Free",
+    "Deep Reinforcement Learning": "Deep RL",
+    "Planning Techniques": "Planning",
+    "Natural Language Processing": "NLP",
+    "Text Representation": "Text Rep",
+    "Word Embeddings (Word2Vec, GloVe)": "Word Embeds",
+    "Contextual Embeddings (BERT, GPT)": "Contextual Embeds",
+    "Language Modeling": "Lang Modeling",
+    "Finetuning Techniques": "Finetuning",
+    "Sequence-to-Sequence Models": "Seq2Seq",
+    "Generation & Correction": "Gen & Correct",
+    "Grammar Correction": "Grammar Fix",
+    "Computer Vision": "CV",
+    "Image Processing": "Image Proc",
+    "Filtering Techniques": "Filtering",
+    "Image Segmentation": "Segmentation",
+    "Object Detection & Generative Models": "Obj Det & Gen",
+    "Feature Extraction": "Features",
+    "GANs & Diffusion Models": "GANs & Diffusion",
+    "Software Engineering": "Soft Eng",
+    "Full-Stack Development": "Full-Stack",
+    "Front-End (HTML, CSS, JS, Frameworks)": "Front-End",
+    "Back-End (Flask, Docker, AWS, REST APIs)": "Back-End",
+    "Systems Programming": "Systems Prog",
+    "C/C++ Programming": "C/C++",
+    "Kernel & Embedded Systems": "Kernel & Embedded",
+    "Cloud & DevOps": "Cloud/DevOps",
+    "Containerization (Docker, Kubernetes)": "Containerization",
+    "Continuous Integration/Deployment (CI/CD, Git)": "CI/CD",
+    "Algorithms & Data Structures": "Algos & DS",
+    "Fundamental Data Structures": "Data Structures",
+    "Arrays, Lists, Trees, Graphs": "Arrays/Trees",
+    "Hashing & Heaps": "Hashing/Heaps",
+    "Optimization Techniques & Complexity Analysis": "Optimization & Complexity",
+    "Greedy Algorithms": "Greedy",
+    "Dynamic Programming": "DP",
+    "Complexity Analysis (Big-O, NP-Completeness)": "Complexity",
+    "Electrical Engineering": "EE",
+    "Circuit Analysis": "Circuit Anal",
+    "Analog Circuit Design": "Analog Design",
+    "Amplifiers & Filters": "Amps & Filters",
+    "Digital Circuit Design": "Digital Design",
+    "Logic Gates & Boolean Algebra": "Logic & Boolean",
+    "Microprocessors & FPGAs": "uProc & FPGA",
+    "Embedded Systems": "Embedded",
+    "Firmware Development": "Firmware Dev",
+    "Real-Time Operating Systems": "RTOS",
+    "Low-Level Programming (Assembly, C)": "Asm/C",
+    "Sensor Integration & Signal Acquisition": "Sensor & Signal",
+    "Analog-to-Digital Conversion": "ADC",
+    "Sensor Fusion Techniques": "Sensor Fusion",
+    "Signal Processing & Communication": "Sig Proc & Comm",
+    "FIR & IIR Filters": "FIR/IIR",
+    "Adaptive Filters": "Adaptive",
+    "Communication Protocols": "Comm Protocols",
+    "UART, SPI, I2C": "UART/SPI/I2C",
+    "Wireless Communication (Bluetooth, Wi-Fi)": "Wireless",
+    "Mechanical Engineering": "ME",
+    "Robotics & Automation": "Robotics",
+    "Locomotion & Control Systems": "Locomotion & Ctrl",
+    "PID Controllers": "PID",
+    "Adaptive Control": "Adaptive Ctrl",
+    "Mechatronics Integration": "Mechatronics",
+    "Sensor-Actuator Coordination": "Sensor-Actuator",
+    "Real-Time Control Systems": "Real-Time Ctrl",
+    "Mechanical Design & Simulation": "Design & Sim",
+    "CAD Modeling (Fusion360, SolidWorks)": "CAD",
+    "Simulation Tools (PyBullet, MATLAB/Simulink)": "Sim Tools",
+    "Dynamics & Kinematics": "Dynamics/Kinematics",
+    "Static & Dynamic Analysis": "Static/Dynamic",
+    "Force Analysis": "Force Anal",
+    "Energy Methods": "Energy Mthds",
+    "Motion Planning": "Motion Plan",
+    "Trajectory Optimization": "Trajectory Opt",
+    "Kinematic Chains & Inverse Kinematics": "Chains & IK",
+    "Mathematics": "Math",
+    "Applied Mathematics": "Applied Math",
+    "Optimization & Numerical Methods": "Opt & Num",
+    "Linear Programming": "Linear Prog",
+    "Convex Optimization": "Convex Opt",
+    "Gradient Descent & Variants": "Grad Descent",
+    "Newton's Method": "Newton",
+    "Differential Equations": "Diff Eq",
+    "Ordinary Differential Equations (ODEs)": "ODEs",
+    "Partial Differential Equations (PDEs)": "PDEs",
+    "Theoretical & Discrete Mathematics": "Theory & Discrete",
+    "Abstract Algebra & Number Theory": "Algebra & Number",
+    "Group Theory": "Groups",
+    "Ring & Field Theory": "Ring & Field",
+    "Statistics, Probability & Graph Theory": "Stats & Graph",
+    "Descriptive & Inferential Statistics": "Desc & Inf Stats",
+    "Combinatorics & Probability Distributions": "Comb & Prob",
+    "Graph Algorithms (Traversal, Shortest Paths)": "Graph Algos"
+  };
+
+  // Helper to fetch short name from dictionary or fallback to original
+  function getShortName(longName) {
+    return shortNames[longName] || longName;
+  }
+
+  // 2. Hierarchical data
+  const treeData = {
+    "name": "ROOT: Foundational Domains",
+    "children": [
+      {
+        "name": "Computer Science",
+        "children": [
+          {
+            "name": "Artificial Intelligence & Machine Learning",
+            "children": [
+              {
+                "name": "Machine Learning Fundamentals",
+                "children": [
+                  {
+                    "name": "Supervised Learning",
+                    "children": [
+                      {"name": "Regression Techniques"},
+                      {"name": "Classification Algorithms"}
+                    ]
+                  },
+                  {
+                    "name": "Unsupervised Learning",
+                    "children": [
+                      {"name": "Clustering (K-Means, Hierarchical, DBSCAN)"},
+                      {"name": "Dimensionality Reduction (PCA, t-SNE, UMAP)"}
+                    ]
+                  },
+                  {
+                    "name": "Semi-Supervised Learning",
+                    "children": [
+                      {"name": "Self-training Methods"},
+                      {"name": "Co-training Approaches"}
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Deep Learning",
+                "children": [
+                  {
+                    "name": "Neural Networks",
+                    "children": [
+                      {"name": "Feedforward Networks"},
+                      {"name": "Autoencoders"}
+                    ]
+                  },
+                  {
+                    "name": "Convolutional Neural Networks",
+                    "children": [
+                      {"name": "Image Classification"},
+                      {"name": "Object Detection"}
+                    ]
+                  },
+                  {
+                    "name": "Recurrent Neural Networks",
+                    "children": [
+                      {"name": "LSTM/GRU"},
+                      {"name": "Sequence Modeling"}
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Reinforcement Learning",
+                "children": [
+                  {
+                    "name": "Tabular Methods",
+                    "children": [
+                      {"name": "Q-Learning"},
+                      {"name": "SARSA"}
+                    ]
+                  },
+                  {
+                    "name": "Model-Based Evaluation",
+                    "children": [
+                      {"name": "Value Iteration"},
+                      {"name": "Policy Iteration"}
+                    ]
+                  },
+                  {
+                    "name": "Model-Free Evaluation",
+                    "children": [
+                      {"name": "Monte Carlo Methods"},
+                      {"name": "Temporal Difference Learning"}
+                    ]
+                  },
+                  {
+                    "name": "Deep Reinforcement Learning",
+                    "children": [
+                      {"name": "Deep Q-Network (DQN)"},
+                      {"name": "Policy Gradient Methods"},
+                      {"name": "Actor-Critic Algorithms"}
+                    ]
+                  },
+                  {
+                    "name": "Planning Techniques",
+                    "children": [
+                      {"name": "Monte Carlo Tree Search"},
+                      {"name": "Model Predictive Control"}
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Natural Language Processing",
+                "children": [
+                  {
+                    "name": "Text Representation",
+                    "children": [
+                      {"name": "Word Embeddings (Word2Vec, GloVe)"},
+                      {"name": "Contextual Embeddings (BERT, GPT)"}
+                    ]
+                  },
+                  {
+                    "name": "Language Modeling",
+                    "children": [
+                      {"name": "Statistical Language Models"},
+                      {"name": "Neural Language Models"}
+                    ]
+                  },
+                  {
+                    "name": "Finetuning Techniques",
+                    "children": [
+                      {"name": "Transfer Learning"},
+                      {"name": "Domain Adaptation"}
+                    ]
+                  },
+                  {
+                    "name": "Sequence-to-Sequence Models",
+                    "children": [
+                      {"name": "Machine Translation"},
+                      {"name": "Summarization"}
+                    ]
+                  },
+                  {
+                    "name": "Generation & Correction",
+                    "children": [
+                      {"name": "Grammar Correction"},
+                      {"name": "Text Generation"}
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Computer Vision",
+                "children": [
+                  {
+                    "name": "Image Processing",
+                    "children": [
+                      {"name": "Filtering Techniques"},
+                      {"name": "Image Segmentation"}
+                    ]
+                  },
+                  {
+                    "name": "Object Detection & Generative Models",
+                    "children": [
+                      {"name": "Feature Extraction"},
+                      {"name": "GANs & Diffusion Models"}
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Software Engineering",
+            "children": [
+              {
+                "name": "Full-Stack Development",
+                "children": [
+                  {"name": "Front-End (HTML, CSS, JS, Frameworks)"},
+                  {"name": "Back-End (Flask, Docker, AWS, REST APIs)"}
+                ]
+              },
+              {
+                "name": "Systems Programming",
+                "children": [
+                  {"name": "C/C++ Programming"},
+                  {"name": "Kernel & Embedded Systems"}
+                ]
+              },
+              {
+                "name": "Cloud & DevOps",
+                "children": [
+                  {"name": "Containerization (Docker, Kubernetes)"},
+                  {"name": "Continuous Integration/Deployment (CI/CD, Git)"}
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Algorithms & Data Structures",
+            "children": [
+              {
+                "name": "Fundamental Data Structures",
+                "children": [
+                  {"name": "Arrays, Lists, Trees, Graphs"},
+                  {"name": "Hashing & Heaps"}
+                ]
+              },
+              {
+                "name": "Optimization Techniques & Complexity Analysis",
+                "children": [
+                  {"name": "Greedy Algorithms"},
+                  {"name": "Dynamic Programming"},
+                  {"name": "Complexity Analysis (Big-O, NP-Completeness)"}
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Electrical Engineering",
+        "children": [
+          {
+            "name": "Circuit Analysis",
+            "children": [
+              {
+                "name": "Analog Circuit Design",
+                "children": [
+                  {"name": "Amplifiers & Filters"},
+                  {"name": "Oscillators"}
+                ]
+              },
+              {
+                "name": "Digital Circuit Design",
+                "children": [
+                  {"name": "Logic Gates & Boolean Algebra"},
+                  {"name": "Microprocessors & FPGAs"}
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Embedded Systems",
+            "children": [
+              {
+                "name": "Firmware Development",
+                "children": [
+                  {"name": "Real-Time Operating Systems"},
+                  {"name": "Low-Level Programming (Assembly, C)"}
+                ]
+              },
+              {
+                "name": "Sensor Integration & Signal Acquisition",
+                "children": [
+                  {"name": "Analog-to-Digital Conversion"},
+                  {"name": "Sensor Fusion Techniques"}
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Signal Processing & Communication",
+            "children": [
+              {
+                "name": "Filtering Techniques",
+                "children": [
+                  {"name": "FIR & IIR Filters"},
+                  {"name": "Adaptive Filters"}
+                ]
+              },
+              {
+                "name": "Communication Protocols",
+                "children": [
+                  {"name": "UART, SPI, I2C"},
+                  {"name": "Wireless Communication (Bluetooth, Wi-Fi)"}
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Mechanical Engineering",
+        "children": [
+          {
+            "name": "Robotics & Automation",
+            "children": [
+              {
+                "name": "Locomotion & Control Systems",
+                "children": [
+                  {"name": "PID Controllers"},
+                  {"name": "Adaptive Control"}
+                ]
+              },
+              {
+                "name": "Mechatronics Integration",
+                "children": [
+                  {"name": "Sensor-Actuator Coordination"},
+                  {"name": "Real-Time Control Systems"}
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Mechanical Design & Simulation",
+            "children": [
+              {"name": "CAD Modeling (Fusion360, SolidWorks)"},
+              {"name": "Simulation Tools (PyBullet, MATLAB/Simulink)"}
+            ]
+          },
+          {
+            "name": "Dynamics & Kinematics",
+            "children": [
+              {
+                "name": "Static & Dynamic Analysis",
+                "children": [
+                  {"name": "Force Analysis"},
+                  {"name": "Energy Methods"}
+                ]
+              },
+              {
+                "name": "Motion Planning",
+                "children": [
+                  {"name": "Trajectory Optimization"},
+                  {"name": "Kinematic Chains & Inverse Kinematics"}
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Mathematics",
+        "children": [
+          {
+            "name": "Applied Mathematics",
+            "children": [
+              {
+                "name": "Optimization & Numerical Methods",
+                "children": [
+                  {"name": "Linear Programming"},
+                  {"name": "Convex Optimization"},
+                  {"name": "Gradient Descent & Variants"},
+                  {"name": "Newton's Method"}
+                ]
+              },
+              {
+                "name": "Differential Equations",
+                "children": [
+                  {"name": "Ordinary Differential Equations (ODEs)"},
+                  {"name": "Partial Differential Equations (PDEs)"}
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Theoretical & Discrete Mathematics",
+            "children": [
+              {
+                "name": "Abstract Algebra & Number Theory",
+                "children": [
+                  {"name": "Group Theory"},
+                  {"name": "Ring & Field Theory"}
+                ]
+              },
+              {
+                "name": "Statistics, Probability & Graph Theory",
+                "children": [
+                  {"name": "Descriptive & Inferential Statistics"},
+                  {"name": "Combinatorics & Probability Distributions"},
+                  {"name": "Graph Algorithms (Traversal, Shortest Paths)"}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  };
+
+  const extraLinksData = [
+    { source: "Deep Learning", target: "Optimization Techniques & Complexity Analysis" },
+    { source: "Deep Learning", target: "Statistics, Probability & Graph Theory" },
+    { source: "Robotics & Automation", target: "Sensor Integration & Signal Acquisition" },
+    { source: "Robotics & Automation", target: "Mechanical Design & Simulation" }
+  ];
+
+  // 3. Dimensions from the SVG viewBox
+  const svg = d3.select("svg");
+  const viewBoxValues = svg.attr("viewBox").split(" ").map(Number);
+  const width = viewBoxValues[2];
+  const height = viewBoxValues[3];
+  const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+
+  // 4. Tree layout for left-to-right ordering
+  const treeLayout = d3.tree().size([width - margin.left - margin.right, height - margin.top - margin.bottom]);
+  const root = d3.hierarchy(treeData);
+  treeLayout(root);
+  // Swap coordinates (use y as x, x as y) for horizontal layout
+  root.descendants().forEach(d => {
+    d.treeX = d.y + margin.left; // left->right
+    d.treeY = d.x + margin.top;  // top->bottom
+  });
+
+  // 5. Build node lookup
+  const nodeByName = {};
+  root.descendants().forEach(d => { nodeByName[d.data.name] = d; });
+
+  // 6. Combine tree links and extra links
+  const treeLinks = root.links().map(l => { l.extra = false; return l; });
+  const extraLinks = extraLinksData.map(link => ({
+    source: nodeByName[link.source],
+    target: nodeByName[link.target],
+    extra: true
+  }));
+  const links = treeLinks.concat(extraLinks);
+  const nodes = root.descendants();
+
+  // 7. Force simulation
+  const simulation = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links)
+      .id(d => d.data.name)
+      .distance(100)
+    )
+    // Increase negative charge so big circles repel more
+    .force("charge", d3.forceManyBody().strength(-400))
+    // Pull nodes toward their tree positions
+    .force("x", d3.forceX(d => d.treeX).strength(1))
+    .force("y", d3.forceY(d => d.treeY).strength(1))
+    // Increase collide radius to accommodate bigger circles
+    .force("collide", d3.forceCollide(60));
+
+  // 8. Create a group for zoom & pan
+  const g = svg.append("g");
+
+  // 9. Draw links
+  const linkSelection = g.selectAll("line")
+    .data(links)
+    .enter()
+    .append("line")
+    .attr("class", d => d.extra ? "extra-link" : "link");
+
+  // 10. Draw nodes
+  const nodeSelection = g.selectAll(".node")
+    .data(nodes)
+    .enter()
+    .append("g")
+    .attr("class", "node")
+    .call(d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended)
+    );
+
+  // Bigger circle radius
+  nodeSelection.append("circle")
+    .attr("r", 50);
+
+  // Centered text inside the circle
+  nodeSelection.append("text")
+    .attr("text-anchor", "middle")
+    .attr("dy", "0.35em")
+    .text(d => getShortName(d.data.name));
+
+  // 11. Highlight links on hover
+  nodeSelection.on("mouseover", function(event, d) {
+    linkSelection.classed("highlight", l =>
+      d.ancestors().includes(l.target) ||
+      (l.extra && (l.source.data.name === d.data.name || l.target.data.name === d.data.name))
+    );
+  })
+  .on("mouseout", () => {
+    linkSelection.classed("highlight", false);
+  });
+
+  // 12. Update positions on each tick
+  simulation.on("tick", () => {
+    linkSelection
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y);
+
+    nodeSelection
+      .attr("transform", d => `translate(${d.x},${d.y})`);
+  });
+
+  // 13. Zoom & Pan
+  svg.call(d3.zoom()
+    .scaleExtent([0.3, 5])
+    .on("zoom", event => {
+      g.attr("transform", event.transform);
+    })
+  );
+
+  // 14. Drag handlers
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+</script>
+</body>
+</html>

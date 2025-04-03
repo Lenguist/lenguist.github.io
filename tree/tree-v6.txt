@@ -1,0 +1,95 @@
+Layer 1: College Majors / Fields
+----------------------------------
+Nodes:
+  - Mathematics
+  - Computer Science
+  - Electrical Engineering
+  - Mechanical Engineering
+  - Computer Engineering
+  - Artificial Intelligence
+
+Connections:
+  - No interconnections among these nodes.
+  
+Layout:
+  - These nodes will be positioned as the top-level anchors, spaced widely apart.
+
+--------------------------------------------------
+Layer 2: Courses / Classes
+--------------------------------------------------
+This layer is divided into two sub-layers:
+
+Sub-layer 2A: Foundational / Lower-Level Courses
+--------------------------------------------------
+Nodes:
+  - Linear Algebra
+  - Multivariable Calculus
+  - Circuit Analysis
+  - Transistors
+  - Signals
+  - Digital Logic
+  - Analog Devices
+  - Probability
+  - C Programming / Low-Level Coding
+
+Connections:
+  - Each foundational course connects upward to its corresponding major in Layer 1.
+  - Minimal lateral connections only to represent essential prerequisites 
+    (for example, C Programming / Low-Level Coding may connect to Operating Systems below).
+
+Layout:
+  - Arrange these nodes in a clear horizontal row with ample spacing between each node.
+
+Sub-layer 2B: Advanced / Specialized Courses
+--------------------------------------------------
+Nodes:
+  - Operating Systems (OS)
+  - Data Structures
+  - Topics in Computer Science
+  - Machine Learning
+  - Parallel Optimization for Robotics
+  - Computer Architecture
+  - CAD
+  - Mobile Robotics / SLAM (or an alternative name for advanced robotics/SLAM topics)
+  - Robotics Iteration (to capture iterative robotics/advanced SLAM topics)
+
+Connections:
+  - Each advanced course connects upward to its relevant major in Layer 1.
+  - Lateral connections represent prerequisite or dependency relationships, for example:
+      • Linear Algebra, Probability, and Multivariable Calculus → Machine Learning.
+      • C Programming / Low-Level Coding → Operating Systems.
+      • Data Structures ↔ Topics in Computer Science.
+  - These connections are kept minimal but clear to show progression.
+
+Layout:
+  - Position these nodes as a second horizontal row beneath the foundational courses.
+  - Increase spacing between nodes to avoid overlap and ensure clarity.
+
+--------------------------------------------------
+Layer 3: Detailed Topics / Concepts
+--------------------------------------------------
+Nodes:
+  (This layer is more free-form and less structured, capturing detailed ideas and methods from the courses)
+  - Neural Networks
+  - Clustering
+  - Optimization Algorithms
+  - Digital Circuit Design
+  - Sensor Integration
+  - Extended Kalman Filter (EKF)
+  - Signal Processing Techniques
+  - (Additional specific topics as needed)
+
+Connections:
+  - Each detailed topic node connects to one or more courses from Layer 2 that cover the subject.
+  - These connections are more numerous and cross-disciplinary, emphasizing interdisciplinary links.
+
+Layout:
+  - Nodes in this layer will be distributed organically, allowing a more chaotic, networked feel.
+  - Spacing will be increased to accommodate the density and avoid overlap.
+
+--------------------------------------------------
+Overall Spacing & Layout Considerations:
+  - Increase horizontal and vertical spacing between nodes across all layers.
+  - Ensure clear separation between layers while allowing connections to span layers.
+  - Use a force-directed layout with customized forces to maintain the defined layer positions
+    and to prevent text and nodes from overlapping.
