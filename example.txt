@@ -1,0 +1,148 @@
+     
+about(current)
+blog
+publications and pre-prints
+projects
+academics
+
+⌘ k 
+
+
+Alex L. Zhang
+PhD Student at MIT CSAIL, Princeton CS '24
+
+Alex_Zhang_2024.png
+Hi 👋! I broadly work on problems related to evaluating language model capabilities, systems and GPU programming for machine learning, and AI for code generation. Read my latest work on Recursive Language Models (RLMs). I co-lead the GPU MODE leaderboard, where we recently hosted two $100k competitions with AMD and a model optimization competition with Jane Street.
+
+I am a PhD student at MIT CSAIL advised by Omar Khattab. I spent the summer before at Sakana AI. I spent a year before that as a researcher at VantAI working on AI-based drug discovery.
+
+Before that, I graduated as the top student of the Princeton CS department, where I was blessed with amazing mentors: Professor Karthik Narasimhan, Dr. Khanh Nguyen, Dr. Ofir Press, and Professor Kai Li. During that time, I was doing some blend of AI/ML research while interning at Snapchat, Apple , and Claryo. Before that, I used to make and sell PC games, one of which was mildly successful (~100k+ players). [unfinished example]
+
+
+
+
+research highlights:
+Language Model Benchmarks. VideoGameBench (2025), KernelBench (ICML, 2025), SWE-bench Multimodal emoji (ICLR, 2025)
+Models. Neo-1 (2025), KernelLLM-8B (2025), Language-guided World Models (SpLU-RoboNLP @ ACL, 2024)
+ML Systems. Project Popcorn 🍿 (2025), Triton kernels for OSS AlphaFold3 (1k+ ⭐'s) (2024)
+
+
+Feel free to reach out to talk about anything through my email at [x]@mit.edu where [x]=altzhang. It’s not obvious from my research, but I spent most of my undergrad studying math + CS theory and love to chat about it! On that topic, check out my college roommate Evan’s math reading list! Finally, I’m also very active in the GPU MODE community.
+
+
+latest posts
+Oct 15, 2025	Recursive Language Models
+Oct 30, 2024	A Meticulous Guide to Advances in Deep Learning Efficiency over the Years
+Jul 01, 2024	The Annotated Kolmogorov-Arnold Network (KAN)
+
+selected publications
+kernelbot.png
+KernelBot: A Competition Platform for Writing Heterogeneous GPU Code
+Alex Zhang*, Matej Sirovatka*, Erik Schultheis*, Benjamin Horowitz* , and 1 more author
+CODEML @ ICML 2025 (Spotlight)
+ 
+videogamebench.png
+VideoGameBench: Can Vision-Language Models complete popular video games?
+Alex Zhang, Thomas L. Griffiths, Karthik R. Narasimhan, and Ofir Press
+Under review
+  
+NLP
+kernelbench.png
+KernelBench: Can LLMs Write Efficient GPU Kernels?
+Anne Ouyang*, Simon Guo*, Simran Arora, Alex Zhang , and 3 more authors
+ICML 2025, DL4C (Best Paper) & SSI-FM Workshop @ ICLR 2025
+ 
+NLP
+teaser_mm.png
+SWE-bench Multimodal: Do AI Systems Generalize to Visual Software Domains?
+John Yang*, Carlos E. Jimenez*, Alex Zhang, Kilian Lieret , and 9 more authors
+ICLR 2025
+ 
+NLP
+lgwm.png
+Language-guided World Models: A Model-Based Approach to AI Control.
+Alex Zhang*, Khanh Nguyen*, Jens Tuyls, Albert Lin , and 1 more author
+SpLU-RoboNLP Workshop @ ACL 2024 (Oral)
+  
+news
+Jun 12, 2025	Went on stage with Lisa Su, CEO of AMD, who recognized our AMD GPU programming competition and announced the winners! [picture].
+Nov 01, 2024	Started as a researcher at VantAI under the wonderful Luca Naef!
+Jun 03, 2024	Starting a research internship at Snapchat focused on large-scale recommendation systems!
+Mar 17, 2023	Organized and went on AI TigerTrek with my close (and brilliant!) friends Evan Dogariu, Michael Tang, and Jiatong Yu! We visited and had Q&A’s at OpenAI, Google, Anthropic, Redwood Research, Stanford HAI, Nuro, and more!
+Aug 29, 2022	Finished my internship in Seattle at Apple INFI working on LMs in Siri!
+© Copyright 2025 Alex L. Zhang.
+
+Alex L. Zhang
+about
+blog(current)
+publications and pre-prints
+projects
+academics
+
+⌘ k 
+
+
+the kitchen 🍜
+these posts serve as technical resources for learning and research
+Recursive Language Models
+We propose Recursive Language Models (RLMs), an inference strategy where language models can decompose and recursively interact with input context of unbounded length through REPL environments.
+
+35 min read   ·   October 15, 2025
+
+ 2025   ·    recursive    language    models
+
+A Meticulous Guide to Advances in Deep Learning Efficiency over the Years
+A very long and thorough guide how deep learning algorithms, hardware, libraries, compilers, and more have become more efficient.
+
+149 min read   ·   October 30, 2024
+
+ 2024   ·    efficient
+
+The Annotated Kolmogorov-Arnold Network (KAN)
+An annotated guide to the Kolmogorov-Arnold Network
+
+56 min read   ·   July 01, 2024
+
+ 2024   ·    annotated    kolmogorov
+
+Highlights of NeurIPS 2023 from Reading All 3584 Abstracts
+Just me reading through every paper abstract...
+
+96 min read   ·   January 09, 2024
+
+ 2024   ·    summary    generative    ai   ·    blog
+
+© Copyright 2025 Alex L. Zhang.
+
+Alex L. Zhang
+about
+blog
+publications and pre-prints
+projects(current)
+academics
+
+⌘ k 
+
+
+projects
+Some research and other related projects I've been working on. Everything here is either a personal project or a research project unrelated to my lab.
+
+AI/ML
+Efficient Triton Implementation of MSA pair weighted averaging with gating for AlphaFold3 🧬 
+Triton Implementation of FlashAttention2 with Custom Attention Masks 🎭 
+A Simple Framework for Intrinsic Reward-Shaping for Reinforcement Learning using LLM Feedback (bad code) 
+Pruning Methods with Sparse Factorizations of Neural Networks 
+Appearance Codes using Joint Embedding Learning of Multiple Modalities 
+Predicting Visual Futures with Image Captioning and Pre-Trained Language Models 
+Developing a Device-Independent Software for Adaptive Tremor Suppression Orthoses 
+- Intel International Science and Engineering Fair (ISEF) 2019 - 2nd Place
+
+Math Stuff
+Robustness of Overparameterized Deep Learning
+Transaction Fee Mining and Mechanism Design
+Quantum Information Theory and the No-Cloning Theorem
+Other
+SLAM for Maze Navigation on Raspberry Pi Robot 
+My Solutions to Sasha Rush's Triton Puzzles 
+© Copyright 2025 Alex L. Zhang.
+

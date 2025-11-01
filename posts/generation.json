@@ -1,0 +1,9 @@
+{
+  "title": "Long Stories Generation",
+  "image": "generation.png",
+  "links": {
+    "github": "https://github.com/Lenguist/long-narrative-generation"
+  },
+  "tags": ["llm", "generation"]
+}
+

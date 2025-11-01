@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "trot-or-rot",
+    "title": "Trot or Rot: Teaching a Quadruped Robot to Walk",
+    "description": "Building a quadruped robot from scratch and making it walk",
+    "image": "projects/trot-or-rot/title-figure.jpg"
+  },
+  {
+    "slug": "pravopysnyk",
+    "title": "Pravopysnyk",
+    "description": "AI-powered grammar correction for Ukrainian",
+    "image": "pravopysnyk.png"
+  },
+  {
+    "slug": "erasedraw",
+    "title": "EraseDraw",
+    "description": "Learning to draw via erasing objects (CVPR AI4CC workshop)",
+    "image": "erasedraw.png"
+  },
+  {
+    "slug": "giraffe",
+    "title": "giraffe.study",
+    "description": "Generating explainer videos on any topic",
+    "image": "giraffe.png"
+  },
+  {
+    "slug": "summarization",
+    "title": "Long stories summarization",
+    "description": "Evaluating LLMs and architectures for recursive book summarization",
+    "image": "summarization.png"
+  },
+  {
+    "slug": "generation",
+    "title": "Long stories generation",
+    "description": "Evaluating techniques for prompt-to-book generation",
+    "image": "generation.png"
+  },
+  {
+    "slug": "cache-me-out",
+    "title": "Cache Me Out: RISC-V OOO processor",
+    "description": "Out-of-order RISC-V core in Verilog with full verification",
+    "image": "profile.png"
+  },
+  {
+    "slug": "fpga-mp3-player",
+    "title": "FPGA MP3 Player",
+    "description": "XILINX FPGA plays uploaded songs via custom Verilog pipeline",
+    "image": "profile.png"
+  },
+  {
+    "slug": "ukrainian-gec",
+    "title": "Comparative Study of Ukrainian GEC",
+    "description": "Synthetic data expansion to 1M sentences, new SOTA",
+    "image": "grammar.png"
+  },
+  {
+    "slug": "flutter-drone",
+    "title": "Flutter: NL Drone Autonomy",
+    "description": "Natural-language drone planning; hackathon prize winner",
+    "image": "profile.png"
+  },
+  {
+    "slug": "insight-negotiation",
+    "title": "INSIGHT: Negotiation Strategy",
+    "description": "RL agent for information games with +50% profit",
+    "image": "profile.png"
+  },
+  {
+    "slug": "plant-growth-drought",
+    "title": "Plant Growth During Drought",
+    "description": "Spatio-temporal PDE model; MAA award",
+    "image": "profile.png"
+  }
+]
+

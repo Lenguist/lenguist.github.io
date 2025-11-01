@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Explorations - Maksym Bondarenko</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Goldman&family=Audiowide&display=swap"/>
+    <script defer>
+      async function loadExplorations() {
+        const list = document.getElementById('exploration-list');
+        try {
+          const res = await fetch('explorations/index.json', { cache: 'no-store' });
+          const items = await res.json();
+          list.innerHTML = '';
+          for (const item of items) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `post.html?slug=${encodeURIComponent(item.slug)}`;
+            a.textContent = item.title;
+            a.style.color = 'var(--primary-green)';
+            const desc = item.description ? ` — ${item.description}` : '';
+            li.appendChild(a);
+            if (desc) li.appendChild(document.createTextNode(desc));
+            list.appendChild(li);
+          }
+        } catch (e) {
+          list.innerHTML = '<li>Failed to load explorations.</li>';
+        }
+      }
+      document.addEventListener('DOMContentLoaded', loadExplorations);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1><span class="first-name">explorations</span></h1>
+        <pre class="ascii-bar">
+---------------------------------------------
+| <a href="index.html">About me</a> | <a href="research.html">Research</a> | <a href="explorations.html">Explorations</a> | <a href="thoughts.html">Thoughts</a> |
+---------------------------------------------
+        </pre>
+    </div>
+
+    <div class="explorations-intro">
+        <h2 class="section-title">explorations</h2>
+        <p class="exploration-subtitle">a running list of things I built or worked on</p>
+    </div>
+
+    <div class="text-content">
+        <ul id="exploration-list">
+            <li>Loading...</li>
+        </ul>
+    </div>
+</body>
+</html>
+

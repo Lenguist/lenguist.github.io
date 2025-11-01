@@ -1,0 +1,322 @@
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,11pt]{article}
+
+%	PACKAGES
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formattingc
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+\definecolor{fancyblue}{HTML}{3973b2}
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\hypersetup{
+    breaklinks,
+    colorlinks=true,       % Enables link colors
+    linkcolor=fancyblue,        % Color of internal links (blue)
+    citecolor=fancyblue,        % Color of citation links (blue)
+    filecolor=fancyblue,        % Color of file links (blue)
+    urlcolor=fancyblue,         % Color of external links (blue)
+    pdfborder={0 0 0}      % Removes underline (no border around links)
+}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Maksym Bondarenko} \\[7pt]
+\address{70 Morningside Dr, New York 10027}{}{}\\[1pt]
+\href{mailto:mb5018@columbia.edu}{\raisebox{-0.05\height}\faEnvelope \ mb5018@columbia.edu} \ $|$ \ 
+\href{tel:+1(609)302-1757}{\raisebox{-0.05\height}\faMobile \ +1(609)302-1757} \ $|$ \
+\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ Lenguist} \ $|$ \ 
+%\href{https://www.linkedin.com/in/maksym-bondarenko-bb498316a/}{\raisebox{-0.05\height}\faLinkedin\ Maksym Bondarenko} \\ 
+\href{https://lenguist.github.io/}{\raisebox{-0.05\height}\faGlobe \ lenguist.xyz}
+\end{tabularx}
+
+
+%----------------------------------------------------------------------
+% EDUCATION
+%----------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Columbia University}, \textit{BS in Computer Engineering, GPA 3.5/4.0} & \hfill 
+\textbf{Expected graduation: May 2026}\\
+\multicolumn{2}{@{}X@{}}{
+\textbf{Advanced coursework:} Language Generation Seminar, Deep Learning for Robot Manipulation, Reinforcement Learning, System-on-Chip Platforms, Computer Architecture, CUDA for Robotics, Computational Robotics
+
+\textbf{Princeton University (taken as a high school senior):} Machine Learning, Natural Language Processing.
+
+\textbf{Lawrenceville School:} Received a full ride to attend, graduated cum laude.
+
+\textbf{Honors:}  Competed in 2017 International Linguistics Olympiad. 2023 International Mathematical Contest in Modeling and MAA award winner (out of 11000 participants). Full-ride John Jay Scholar at Columbia}
+
+
+\end{tabularx}
+
+
+% EXPERIENCE
+% ---------------------------
+\section{Experience}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Mako Dev, Research Engineer Intern} & \hfill September – December 2025\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item (Ongoing) Accelerating GPU inference with AI written kernels.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Notion, Software Engineering Intern} & \hfill May – August 2025\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Built historic autolabel system for automatically categorizing user email history using NLP techniques and backend orchestration (TypeScript, BullMQ, AWS). Optimized processing pipeline to reduce costs by 10x and processing time by 50x, enabling deployment to 400k Notion Mail users (expected to be patented).
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Columbia Robotics Lab, Undergraduate Researcher} & \hfill February – May 2025\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Trained and compared diffusion policy models for robotic manipulation using hybrid simulation and real Xarm robotic arm data. Set up complete pipeline including data collection, Sapien simulation environment, and training infrastructure for behavioral cloning evaluation.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Neo Scholar 2025} & \hfill October 2024\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Selected to be one of the 30 Neo Scholars for the 2025 cohort
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Robotics Startup, Computer Vision Engineer} & \hfill March – August 2024\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item 21st employee at an early stage robotics startup co-founded by Sebastian Thrun.
+\item Co-built full-stack computer vision pipeline from scratch, spanning hardware integration (embedded systems, firmware, optics) to ML deployment, achieving 25 fps on Raspberry Pi with detection rate $>$ 90 \%. 
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Pravopysnyk, Co-Founder and Lead Developer} & \hfill August 2020 – August 2024\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Developed first ever AI-powered grammar correction system for Ukrainian language.
+\item Developed a beta version of  real-time text editor and API using HTML+CSS, JS, Flask, Docker and AWS.
+\item Led an international fully-remote team of 11 developers and linguists across 4 time zones and 3 countries.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Columbia Computer Vision Lab, Undergraduate Researcher} & \hfill September 2023 – April 2024\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Engineered a scalable data generation pipeline for EraseDraw, improving object insertion in natural images, achieving pioneering results in computational image generation with a text-conditioned diffusion model.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Columbia NLP Lab, Undergraduate Researcher} & \hfill June 2023 – December 2023\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Researched, selected and implemented evaluation suite for evaluating AI book-length summarization, including complex coherence and factual consistency metrics, which allowed to reduce per-text cost from \$100 to \$0.01.
+\item Worked on long-form text generation using LLMs and recursive methods.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Columbia Math Modelling, Researcher and Competitor} & \hfill Feb 2023 – Aug 2023\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Selected to participate in Summer Research in Mathematical Modeling (CSUREMM) – a ten-week, NSF-funded program for collaborative research in mathematical modeling.
+\item 2023 Mathematical Contest in Modeling Outstanding Paper and MAA Award Winner.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Reply.io, Data Science Intern} & \hfill June 2021 – Aug 2021 \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Collected and analyzed data from google analytics using SQL to improve customer retention by 10\%.
+\item Shipped GPT-3 email snippet generator built using Python to Reply.io's 10,000+ users.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{CHCKR, Product Intern} & \hfill June 2020 – Aug 2020 \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Developed and tested essay-correction algorithms using Python.
+\item Created and maintained technical blog for 200 monthly visitors.
+\end{itemize}
+\end{minipage}}\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Ukraine Global Scholars, Volunteer and Mentor} & \hfill June 2018  – Jan 2025\\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Helped talented Ukrainian students from underprivileged backgrounds with essay writing and test preparation to get admitted to top US colleges and boarding schools. Successfully mentored 4 students and helped them receive \$1M+ in scholarships.
+\end{itemize}
+\end{minipage}
+}
+\end{tabularx}
+
+% \section{Publications}
+\section{Projects and Publications}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://github.com/Lenguist/trot-or-rot}{Trot or Rot: Teaching a quadruped to walk}} & \hfill September 2024 – December 2024 \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Full-stack development of a quadruped robot from scratch, including custom mechanical design in Fusion360, simulation in PyBullet, electronics integration, and walking algorithm implementation.
+\item Implemented and compared increasingly sophisticated RL algorithms (Vanilla Policy Gradient, PPO, SAC) for locomotion optimization, achieving 5x improvement in speed from baseline hill climber while addressing sample efficiency and sim-to-real transfer challenges.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://github.com/amirzarandi/comp-arch-project}{Cache Me Out: RISC-V OOO processor}} & \hfill March – May 2025 \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Developed complete out-of-order processor in Verilog implementing microarchitecture components (reservation stations, reorder buffer, branch predictor, caches) with load-store queue optimizations and full FPGA synthesis verification using custom testbenches. 
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://erasedraw.cs.columbia.edu/}{EraseDraw: Learning Object Insertion from Erasing (CVPR 2024) }} & \hfill June 2024 \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Improved object insertion in natural images by engineering a scalable data generation pipeline that reverses object removal processes, enhancing spatial and optical realism in generated images.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://github.com/Lenguist/fpga-piano}{FPGA MP3 Player}} & \hfill April – May 2024 \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Programmed a XILINX FPGA from scratch to play custom uploaded songs using Verilog.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://aclanthology.org/2023.unlp-1.13/}{Comparative Study of Ukrainian Grammar Correction Models (EACL 2023)}} & \hfill May 2023 \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Developed unique synthetic data generation system and expanded Ukrainian GEC dataset from 20k to 1M sentences, and set the new state-of-the art using a seq2seq model trained on custom data. 
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+% \section{Projects}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://github.com/jinyoungkim927/PromptCraft-Robotics-Hackathon}{Flutter - Won 10,000\$ prize at a hackathon organized by Sebastian Thrun}} & \hfill January 2024 \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Developed a method for autonomous drone operation using natural language input and LLM planning, which can allow drones to perform complex tasks with minimal supervision.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://devpost.com/software/giraffe-study}{Giraffe.study - category winner at HackHarvard out of 150 teams}} & \hfill October 2023 \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Pioneered a method to autonomously produce over 2 minutes long videos revolutionizing custom educational content creation using manim, Python, Bash scripting, advanced prompt engineering, and Open AI API.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{INSIGHT: Intelligent Negotiation Strategy
+for Information Games} & \hfill June – August 2023 \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Implemented a bilateral simulation of market negotiation and employed reinforcement learning  to create an AI agent that outperformed existing heuristic models profit by 50\%.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Spatio-temporal Model for Plant Growth During Drought Cycles} & \hfill Feb 2023 \\
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+\item Developed a unique spatio-temporal model using partial differential equations as part of a 3-person team to predict drought patterns and effects based on species diversity. Received MAA Award for our work.
+\end{itemize}
+\end{minipage}}
+\end{tabularx}
+
+
+
+%	SKILLS
+% ---------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Programming Languages} &  \normalsize{Python, C/C++, CUDA, SQL, Verilog, JavaScript/TypeScript}\\
+\textbf{AI/ML} &  \normalsize{Pytorch, NumPy, NLP, CV, RL, Diffusion models, Transformers}\\
+\textbf{Robotics} &  \normalsize{Quadrupeds, Drones, Manipulators, PyBullet, Sapien, AirSim, SLAM}\\
+\textbf{Software Development} &  \normalsize{HTML+CSS, Docker, Flask, AWS, GCP, Unix, bash, kernel programming, GIT}\\
+\textbf{Electrical} &  \normalsize{SPICE, Circuit Analysis, VHDL, FPGA programming, optical sensors}\\
+\textbf{Mechanical} &  \normalsize{Fusion360, 3D printing}\\
+\textbf{Other} &  \normalsize{LaTeX, Wolfram Mathematica}\\
+\textbf{Languages} &  \normalsize{Ukrainian (native), English (fluent)}
+\end{tabularx}
+
+\end{document}
+1fg

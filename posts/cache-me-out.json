@@ -1,0 +1,9 @@
+{
+  "title": "Cache Me Out: RISC-V OOO processor",
+  "image": "profile.png",
+  "links": {
+    "github": "https://github.com/amirzarandi/comp-arch-project"
+  },
+  "tags": ["hardware", "verilog", "microarchitecture"]
+}
+

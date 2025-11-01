@@ -1,0 +1,9 @@
+{
+  "title": "INSIGHT: Intelligent Negotiation Strategy for Information Games",
+  "image": "profile.png",
+  "links": {
+    "pdf": "projects/CSUREMM_insight copy.pdf"
+  },
+  "tags": ["rl", "game-theory", "simulation"]
+}
+

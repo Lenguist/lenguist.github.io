@@ -1,0 +1,11 @@
+{
+  "title": "Trot or Rot: Teaching a Quadruped Robot to Walk",
+  "image": "projects/trot-or-rot/title-figure.jpg",
+  "links": {
+    "website": "trot-or-rot.html",
+    "github": "https://github.com/Lenguist/trot-or-rot",
+    "pdf": "projects/trot-or-rot/trot_or_rot.pdf"
+  },
+  "tags": ["robotics", "rl", "hardware"]
+}
+
