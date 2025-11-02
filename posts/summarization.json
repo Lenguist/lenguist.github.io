@@ -1,9 +1,0 @@
-{
-  "title": "Long Stories Summarization",
-  "image": "summarization.png",
-  "links": {
-    "github": "https://github.com/Lenguist/long-doc-summ"
-  },
-  "tags": ["llm", "summarization"]
-}
-

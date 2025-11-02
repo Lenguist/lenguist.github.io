@@ -1,9 +1,0 @@
-{
-  "title": "FPGA MP3 Player",
-  "image": "profile.png",
-  "links": {
-    "github": "https://github.com/Lenguist/fpga-piano"
-  },
-  "tags": ["fpga", "verilog", "audio"]
-}
-
