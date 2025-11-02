@@ -1,274 +1,108 @@
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #666666;
+  --link: #0b57d0;
+  --border: #e5e5e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0b;
+    --fg: #eaeaea;
+    --muted: #a3a3a3;
+    --link: #8ab4f8;
+    --border: #1f1f1f;
+  }
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+}
+
 body {
-  font-family: 'Courier New', Courier, monospace;
   margin: 0;
-  padding: 0;
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative; /* so we can position the cat relative to body */
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.header {
-  display: flex;
-  align-items: flex-end; /* align bottom of elements */
-  justify-content: space-between;
-  margin: 20px;
+.wrap {
+  max-width: 720px;
+  margin: 6rem auto 4rem;
+  padding: 0 20px;
 }
 
-.first-name {
-  font-family: 'Goldman', sans-serif;
-  font-size: 72px;
-  text-transform: lowercase;
-}
-
-.last-name {
-  font-family: 'Audiowide', cursive;
-  font-size: 32px;
-  text-transform: lowercase;
-}
-
-.ascii-bar {
-  font-family: monospace;
-  font-size: 12px;
-  color: #333;
-  /* pre tag is used, so whitespace is preserved by default */
-  margin-right: 20px;
-  line-height: 1.2; 
-  overflow-x: auto;
-  display: block;
-  max-width: 100%;
-}
-
-.ascii-bar a {
-  text-decoration: none;
-  color: #333 !important;
-  border-bottom: none !important;
-}
-
-.ascii-bar a:hover {
-  text-decoration: underline !important;
-}
-
-.section {
-  margin: 80px 0;
-}
-
-.section-title {
-  font-family: 'Goldman', sans-serif;
-  font-size: 30px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-p a {
-  color: #4d4d4d;
-  text-decoration: none;
-  border-bottom: 1px dotted #808080;
-}
-
-p a:hover {
-  color: #333333;
-  border-bottom: 1px dotted #333333;
-  font-weight: bold;
-}
-
-.profile-image {
-  width: 400px;
-  height: 350px;
-  border: 2px dashed #666;
-  margin-left: 20px;
-}
-
-#about-me {
-  display: flex;
-  width: 90%;
-  text-align: justify;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-#about-me .text {
-  font-size: 14px;
-  padding: 12px;
-  padding-left: 60px;
-}
-
-.indented-quote {
-  margin: 5px 0;
-  padding: 0;
-  font-size: 13px;
-  padding-left: 160px;
-  color: #808080;
-  font-style: italic;
-}
-
-/* Contact Links */
-.contact-links {
-  display: flex;
-  justify-content: space-around;
-  width: 50%;
-  margin: auto;
-}
-
-.contact-links a {
-  text-decoration: none;
-  color: #333;
-  border-bottom: 1px dotted #333;
-}
-
-.contact-links a:hover {
-  font-weight: bold;
-}
-
-/* Research page styling */
-.research-intro-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.research-text {
-  width: 50%;
-  padding: 20px;
-  text-align: justify;
-  font-size: 14px;
-}
-
-.research-image-placeholder {
-  width: 400px;
-  height: 300px;
-  border: 2px dashed #666;
-  display: block;
-  float: right;
-  margin-right: 100px; /* aligns right edge with navbar */
-  color: #666;
-}
-
-.research-item {
-  display: flex;
-  margin-bottom: 20px;
-  align-items: center;
-  width: 80%;
-  margin: 20px auto;
-}
-
-.research-item-image {
-  width: 200px;
-  height: 150px;
-  border: 2px dashed #666;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.research-item-text {
-  flex: 1;
-  font-size: 14px;
-}
-
-/* Thoughts page styling */
-.cat-container {
-  position: absolute;
-  bottom: 20px;
-  right: 100px; /* Align cat's right edge with navbar */
-}
-
-.cat-container a {
-  text-decoration: none;
-  color: black;
-}
-
-.ascii-cat {
-  font-family: 'Audiowide', cursive;
-  font-size: 10px;
-  white-space: pre; /* keeps ASCII formatting intact */
-  color: black;
-  max-width: 100%;
-  overflow-x: auto;
-  display: block;
-}
-
-/* Projects page styling */
-.project-card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  padding: 20px;
-}
-
-.project-card-grid {
-  row-gap: 80px; /* increase as needed */
-}
-
-.project-card {
-  border: 2px dashed #666;
-  padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.project-image {
-  width: 100%;
-  height: 200px;
-  border: 1px solid #333;
-  margin-bottom: 10px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.project-title {
-  font-family: 'Goldman', sans-serif;
-  font-size: 18px;
-  margin: 10px 0;
-  flex-grow: 0;
-}
-
-.project-description {
-  font-size: 14px;
-  text-align: justify;
+header h1 {
   margin: 0;
-  padding: 0 10px;
-  flex-grow: 1;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-.research-item-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+header p.tagline {
+  margin: 6px 0 0 0;
+  color: var(--muted);
 }
 
+nav.links {
+  margin: 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
 
-.project-card {
+nav.links a {
+  color: var(--link);
   text-decoration: none;
-  color: inherit;
 }
 
-.project-card:hover,
-.project-card:focus,
-.project-card:active {
-  text-decoration: none;
-  color: inherit;
+nav.links a:hover {
+  text-decoration: underline;
+}
+
+section {
+  margin-top: 32px;
+}
+
+section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+ul {
+  margin: 10px 0 0 1.1rem;
+  padding: 0;
+}
+
+li {
+  margin: 6px 0;
+}
+
+a {
+  color: var(--link);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 
-.project-card-grid a,
-.project-card-grid a:visited,
-.project-card-grid a:hover,
-.project-card-grid a:active {
-  text-decoration: none !important;
-  color: #333 !important;
-}

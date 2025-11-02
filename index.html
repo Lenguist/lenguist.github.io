@@ -1,64 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Maksym Bondarenko</title>
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Goldman&family=Audiowide&display=swap"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maksym Bondarenko</title>
+  <meta name="description" content="Personal site of Maksym Bondarenko" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="header">
-        <h1><span class="first-name">maksym</span> <span class="last-name">bondarenko</span></h1>
-        <pre class="ascii-bar">
----------------------------------------------
-| <a href="index.html">About me</a> | <a href="research.html">Research</a> | <a href="projects.html">Projects</a> | <a href="thoughts.html">Thoughts</a> |
----------------------------------------------
-        </pre>
-    </div>
+  <main class="wrap">
+    <header>
+      <h1>Maksym Bondarenko</h1>
+      <p class="tagline">i like buildings things that people use</p>
+      <nav class="links">
+        <span>Email: maksym dot d dot bondarenko at gmail com</span>
+        <a href="https://github.com/Lenguist" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/maksym-bondarenko-bb498316a/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/lenguist_mb" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://substack.com/@maksymbondarenko" target="_blank" rel="noopener">Substack</a>
+      </nav>
+    </header>
 
-    <div id="about-me" class="section">
-        <img class="profile-image" src="profile.png" alt="Profile image">
-        <div class="text">
-            <div class="indented-quote">
-                <p>we taught magic sand to do linear algebra and now it can think (maybe)</p>
-            </div>
-            <div class="indented-quote">
-                <p>"went from ai agnostic to ai religious" - people after talking to me</p>
-            </div>
-            <p>Hi! I am Maksym, currently a Computer Engineering student at Columbia University,
-                coming from Kyiv, Ukraine.</p>
-            <p>I am passionate about AI, hardware, startups and deep tech.</p>
-            <p>Previously, I have started <a href="https://www.pravopysnyk.com/">Pravopysnyk</a>,
-                AI grammar correction service for Ukrainian,
-                published <a href="research.html">research</a>, and worked on cool
-                <a href="projects.html">hardware projects.</a></p>
-            <p>Currently exploring <a href="https://maksymbondarenko.substack.com/p/the-memory-problem-why-llms-need">LLM memory</a> and AI tools for hardware engineering, and thinking about ways to productize <a href="https://maksymbondarenko.substack.com/p/repair-robotics-manifesto">general robotics</a></p>
-        </div>
-    </div>
+    <section>
+      <div class="card">
+        <p>I’m a Computer Engineering student at Columbia University interested in building systems at the intersection of hardware and AI - from GPU compilers to robotics and intelligent infrastructure.</p>
+      </div>
+    </section>
 
-    <div class="section">
-        <h2 class="section-title">Life updates</h2>
-        <p>
-            <strong>November 2024</strong> Became <a href="https://neo.com/scholars">Neo scholar</a> for 2025 cohort!<br><br>
-            <strong>August 2024</strong> Completed computer vision internship at a robotics startup<br>
-            as where I was one of the first 30 employees<br><br>
-            <strong>July 2024</strong> Presented <a href="https://erasedraw.cs.columbia.edu/">EraseDraw</a> research at AI4CC workshop at CVPR<br><br>
-            <strong>Jan 2024</strong> Won 10000$ prize at NYC hackathon organized by Sebastian Thrun<br><br>
-            <strong>Oct 2023</strong> Won Harvard Hack with <a href="#">Giraffe.ai</a><br><br>
-            <strong>August 2023</strong> Completed collaboration with Melanie Subbiah on long document summarization<br><br>
-            <strong>May 2023</strong> Won Best Paper Award at Ukrainian NLP workshop at EACL2023 for work on <a href="https://aclanthology.org/2023.unlp-1.13/">Ukrainian Grammar Correction</a>
-        </p>
-    </div>
+    <section>
+      <h2>Now</h2>
+      <ul>
+        <li>Research Engineer Intern at Mako Dev — AI-written GPU kernels for model acceleration.</li>
+        <li>Exploring memory enabled reasoning systems.</li>
+        <li>Wokring on tool to make reading research papers more fun.</li>
+      </ul>
+    </section>
 
-    <div class="section">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-links">
-            <span><a href="#">LinkedIn</a></span>
-            <span><a href="#">GitHub</a></span>
-            <span><a href="#">Email</a></span>
-        </div>
-    </div>
+    <section>
+      <h2>Selected projects</h2>
+      <ul>
+        <li><a href="https://github.com/Lenguist/trot-or-rot" target="_blank" rel="noopener">Trot or Rot</a> — Quadruped robot trained with RL.</li>
+        <li><a href="https://github.com/Lenguist/notion-email" target="_blank" rel="noopener">Notion Mail autolabel</a> — Large-scale email autolabeling; cut cost 10×.</li>
+        <li><a href="https://github.com/Lenguist/ai-for-cad" target="_blank" rel="noopener">AI for CAD</a> — AI-assisted circuit design tools.</li>
+        <li><a href="https://github.com/Lenguist/fpga-piano" target="_blank" rel="noopener">FPGA MP3 player</a> — Verilog-based audio player.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Writing</h2>
+      <p>Occasional essays on engineering and systems on <a href="https://substack.com/@maksymbondarenko" target="_blank" rel="noopener">Bits &amp; Weights</a>.</p>
+    </section>
+
+    <section>
+      <h2>Random facts</h2>
+      <ul>
+        <li>Competed at the International Linguistics Olympiad.</li>
+        <li>Certified bartender — favorite drink: Negroni.</li>
+        <li>Ran the San Francisco Marathon.</li>
+        <li>Used to do ballroom dancing.</li>
+        <li>Big fan of strategy games (Civilization, Paradox, Chess).</li>
+        <li>I like building robots that look slightly cursed.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <span class="muted">© <span id="y"></span> Maksym Bondarenko</span>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
