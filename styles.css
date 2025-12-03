@@ -1,108 +1,489 @@
-:root {
-  --bg: #ffffff;
-  --fg: #111111;
-  --muted: #666666;
-  --link: #0b57d0;
-  --border: #e5e5e5;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0b0b;
-    --fg: #eaeaea;
-    --muted: #a3a3a3;
-    --link: #8ab4f8;
-    --border: #1f1f1f;
-  }
-}
-
-html, body {
-  height: 100%;
-  background: var(--bg);
-  color: var(--fg);
-}
-
 body {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 500;
   margin: 0;
-  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative; /* so we can position elements like the cat relative to body */
+  background-color: #000000;
+  color: #ffffff;
 }
 
-.wrap {
-  max-width: 720px;
-  margin: 6rem auto 4rem;
+/* Theme colors */
+:root {
+  --primary-green: #00f900;
+  --accent-green: #00cc00;
+  --dark-green: #008800;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #333333;
+  --light-gray: #666666;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end; /* align bottom of elements */
+  justify-content: space-between;
+  margin: 20px;
+  flex-wrap: nowrap; /* prevent wrapping */
+}
+
+.header h1 {
+  white-space: nowrap; /* keep name on one line */
+  margin: 0;
+}
+
+.first-name {
+  font-family: 'Goldman', sans-serif;
+  font-size: 60px;
+  text-transform: lowercase;
+  color: var(--primary-green);
+}
+
+.last-name {
+  font-family: 'Audiowide', cursive;
+  font-size: 24px;
+  text-transform: lowercase;
+  color: var(--white);
+}
+
+.ascii-bar {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--light-gray);
+  /* pre tag is used, so whitespace is preserved by default */
+  margin-right: 20px;
+  line-height: 1.2;
+  overflow-x: hidden;
+  display: block;
+  max-width: 100%;
+}
+
+.ascii-bar a {
+  text-decoration: none;
+  color: var(--light-gray) !important;
+  border-bottom: none !important;
+  transition: color 0.3s ease;
+}
+
+.ascii-bar a:hover {
+  color: var(--primary-green) !important;
+  text-decoration: underline !important;
+}
+
+.section {
+  margin: 80px 0;
+}
+
+.section-title {
+  font-family: 'Goldman', sans-serif;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--primary-green);
+}
+
+p a {
+  color: var(--primary-green);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-green);
+  transition: all 0.3s ease;
+}
+
+p a:hover {
+  color: var(--accent-green);
+  border-bottom: 1px solid var(--accent-green);
+  font-weight: bold;
+}
+
+.profile-image {
+  width: 400px;
+  height: 350px;
+  object-fit: cover;
+  border: 2px dashed var(--primary-green);
+  margin-left: 20px;
+}
+
+#about-me {
+  display: flex;
+  width: 90%;
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#about-me .text {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px;
+  padding-left: 60px;
+}
+
+.indented-quote {
+  margin: 5px 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--primary-green);
+  font-style: italic;
+}
+
+/* Generic timeline-like list for life updates */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px 20px 0 10px;
+  display: grid;
+  grid-template-columns: 160px 160px 160px 160px 160px auto;
+  grid-auto-rows: 32px;
+  gap: 0 10px;
+}
+
+.timeline-labels {
+  /* months/years stack in a single column next to the line */
+}
+
+.timeline-item {
+  display: flex;
+  margin: 20px 0;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  width: 10px;
+  height: 10px;
+  background: var(--primary-green);
+  border-radius: 50%;
+  margin-right: 16px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.timeline-content strong {
+  color: var(--primary-green);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 18px;
+  bottom: 0;
+  border-left: 2px solid var(--primary-green);
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 6px;
+  border-bottom: 8px solid var(--primary-green);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.timeline-year {
+  grid-column: 6;
+  align-self: center;
+  margin: 6px 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+.timeline-month {
+  grid-column: 6;
+  align-self: center;
+  margin: 4px 0 0 18px;
+  font-size: 11px;
+  color: var(--primary-green);
+}
+
+.experience-box {
+  grid-column: 5; /* default: rightmost column next to axis */
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  background: #050505;
+}
+
+.experience-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.experience-dates {
+  color: var(--light-gray);
+  margin-bottom: 4px;
+}
+
+.experience-box p {
+  margin: 0;
+}
+
+.experience-box a {
+  color: var(--primary-green);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-green);
+}
+
+.experience-box a:hover {
+  color: var(--accent-green);
+  border-bottom: 1px solid var(--accent-green);
+}
+
+/* Duration-based heights (very rough proportional mapping) */
+.duration-xs { /* ~1–2 months */
+  min-height: 36px;
+}
+
+.duration-s { /* ~3–4 months */
+  min-height: 48px;
+}
+
+.duration-m { /* ~5–8 months */
+  min-height: 72px;
+}
+
+.duration-l { /* ~9–18 months */
+  min-height: 110px;
+}
+
+.duration-xl { /* >18 months */
+  min-height: 150px;
+}
+
+/* Experience placement based on column-packing algorithm */
+/* Columns: 5=closest to axis, 4,3,2,1=progressively left, 6=axis labels */
+
+/* Column 5 (closest to axis): UGS, Robotics Lab, Mako */
+.exp-ugs {
+  grid-column: 5;
+  grid-row: 2 / span 80; /* Jun 2018 – Jan 2025 */
+}
+
+.exp-robotics-lab {
+  grid-column: 5;
+  grid-row: 10 / span 4; /* Feb–May 2025 */
+}
+
+.exp-mako {
+  grid-column: 5;
+  grid-row: 3 / span 4; /* Sep–Dec 2025 */
+}
+
+/* Column 4: CHCKR, Reply.io, Plant Growth, Ukrainian GEC, NLP Lab, Flutter, Robotics Startup, Trot or Rot, Cache Me Out, PaperTrail */
+.exp-chckr {
+  grid-column: 4;
+  grid-row: 68 / span 3; /* Jun–Aug 2020 */
+}
+
+.exp-reply-io {
+  grid-column: 4;
+  grid-row: 58 / span 3; /* Jun–Aug 2021 */
+}
+
+.exp-plant-growth {
+  grid-column: 4;
+  grid-row: 40 / span 1; /* Feb 2023 */
+}
+
+.exp-ukrainian-gec {
+  grid-column: 4;
+  grid-row: 37 / span 1; /* May 2023 */
+}
+
+.exp-nlp-lab {
+  grid-column: 4;
+  grid-row: 30 / span 7; /* Jun–Dec 2023 */
+}
+
+.exp-flutter {
+  grid-column: 4;
+  grid-row: 27 / span 1; /* Jan 2024 */
+}
+
+.exp-robotics-startup {
+  grid-column: 4;
+  grid-row: 20 / span 6; /* Mar–Aug 2024 */
+}
+
+.exp-trot-or-rot {
+  grid-column: 4;
+  grid-row: 17 / span 4; /* Sep–Dec 2024 */
+}
+
+.exp-cache-me-out {
+  grid-column: 4;
+  grid-row: 11 / span 3; /* Mar–May 2025 */
+}
+
+.exp-papertrail {
+  grid-column: 4;
+  grid-row: 4 / span 3; /* Oct 2025–present */
+}
+
+/* Column 3: Pravopysnyk, Neo Scholar, Notion, Telegram Wrapped */
+.exp-pravopysnyk {
+  grid-column: 3;
+  grid-row: 19 / span 49; /* Aug 2020 – Aug 2024 */
+}
+
+.exp-neo {
+  grid-column: 3;
+  grid-row: 18 / span 1; /* Oct 2024 */
+}
+
+.exp-notion {
+  grid-column: 3;
+  grid-row: 7 / span 4; /* May–Aug 2025 */
+}
+
+.exp-telegram-wrapped {
+  grid-column: 3;
+  grid-row: 4 / span 3; /* Oct 2025–present */
+}
+
+/* Column 2: Math Modelling, CV Lab, EraseDraw */
+.exp-math-modeling {
+  grid-column: 2;
+  grid-row: 33 / span 7; /* Feb–Aug 2023 */
+}
+
+.exp-cv-lab {
+  grid-column: 2;
+  grid-row: 24 / span 8; /* Sep 2023 – Apr 2024 */
+}
+
+.exp-erasedraw {
+  grid-column: 2;
+  grid-row: 22 / span 1; /* Jun 2024 */
+}
+
+/* Column 1 (farthest left): INSIGHT, Giraffe.study, FPGA MP3 */
+.exp-insight {
+  grid-column: 1;
+  grid-row: 35 / span 3; /* Jun–Aug 2023 */
+}
+
+.exp-giraffe {
+  grid-column: 1;
+  grid-row: 31 / span 1; /* Oct 2023 */
+}
+
+.exp-fpga-mp3 {
+  grid-column: 1;
+  grid-row: 23 / span 2; /* Apr–May 2024 */
+}
+
+/* Contact Links */
+.contact-links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: var(--primary-green);
+  border-bottom: 1px dotted var(--primary-green);
+}
+
+.contact-links a:hover {
+  font-weight: bold;
+}
+
+/* Simple research / explorations sections adapted from the Flask app */
+.research-intro-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.research-text {
+  max-width: 700px;
+  padding: 20px;
+  text-align: justify;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.explorations-intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.exploration-subtitle {
+  font-size: 18px;
+  color: var(--light-gray);
+  font-style: italic;
+  margin: 0;
+}
+
+.exploration-list {
+  max-width: 700px;
+  margin: 20px auto 0 auto;
   padding: 0 20px;
 }
-
-header h1 {
-  margin: 0;
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-header p.tagline {
-  margin: 6px 0 0 0;
-  color: var(--muted);
-}
-
-nav.links {
-  margin: 16px 0 0;
+ 
+.exploration-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
+  gap: 24px;
+  align-items: flex-start;
+  margin: 10px 0;
 }
 
-nav.links a {
-  color: var(--link);
-  text-decoration: none;
-}
-
-nav.links a:hover {
-  text-decoration: underline;
-}
-
-section {
-  margin-top: 32px;
-}
-
-section h2 {
-  font-size: 16px;
+.exploration-name {
+  min-width: 180px;
   font-weight: 600;
-  margin: 0 0 10px 0;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
-.card {
-  padding: 16px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-}
-
-ul {
-  margin: 10px 0 0 1.1rem;
-  padding: 0;
-}
-
-li {
-  margin: 6px 0;
-}
-
-a {
-  color: var(--link);
-}
-
-.muted {
-  color: var(--muted);
-}
-
-footer {
-  margin-top: 40px;
-  color: var(--muted);
+.exploration-desc {
+  flex: 1;
   font-size: 14px;
 }
 
+.exploration-list a {
+  color: var(--primary-green);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-green);
+  transition: all 0.3s ease;
+}
 
+.exploration-list a:hover {
+  color: var(--accent-green);
+  border-bottom: 1px solid var(--accent-green);
+  font-weight: bold;
+}
+
+/* Random / thoughts section */
+.random-text {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Cat ASCII link at bottom */
+.cat-container {
+  margin: 60px 20px 40px 20px;
+  text-align: right;
+}
+
+.cat-container a {
+  text-decoration: none;
+  color: var(--primary-green);
+}
+
+.ascii-cat {
+  font-family: 'Audiowide', cursive;
+  font-size: 10px;
+  white-space: pre;
+  color: var(--primary-green);
+  max-width: 100%;
+  overflow-x: auto;
+  display: inline-block;
+}
