@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -6,70 +6,127 @@
   <title>Maksym Bondarenko</title>
   <meta name="description" content="Personal site of Maksym Bondarenko" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Goldman&family=Audiowide&display=swap" />
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <h1>Maksym Bondarenko</h1>
-      <p class="tagline">i like buildings things that people use</p>
-      <nav class="links">
-        <span>Email: maksym dot d dot bondarenko at gmail com</span>
-        <a href="https://github.com/Lenguist" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/maksym-bondarenko-bb498316a/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://twitter.com/lenguist_mb" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://substack.com/@maksymbondarenko" target="_blank" rel="noopener">Substack</a>
-      </nav>
-    </header>
+  <div class="header">
+    <h1><span class="first-name">maksym</span> <span class="last-name">bondarenko</span></h1>
+    <pre class="ascii-bar">
+-------------------------------------------
+| <a href="#about-me">About me</a> | <a href="#explorations">Explorations</a> | <a href="#random">Random</a> |
+-------------------------------------------
+    </pre>
+  </div>
 
-    <section>
-      <div class="card">
-        <p>I’m a Computer Engineering student at Columbia University interested in building systems at the intersection of hardware and AI - from GPU compilers to robotics and intelligent infrastructure.</p>
+  <div id="about-me" class="section">
+    <img class="profile-image" src="profile.jpg" alt="Profile image of Maksym with city skyline" />
+    <div class="text">
+      <div class="indented-quote">
+        <p>we taught magic sand to do linear algebra and now it can think (maybe)</p>
       </div>
-    </section>
+      <div class="indented-quote">
+        <p>"went from ai agnostic to ai religious" - people after talking to me</p>
+      </div>
+      <p>Hi! I am Maksym, currently a Computer Engineering student at Columbia University,
+        coming from Kyiv, Ukraine. I'm graduating in May 2026 and am a John Jay Scholar at Columbia.</p>
+      <p>I am passionate about AI, hardware, startups and deep tech.</p>
+      <p>Previously, I have started <a href="https://www.pravopysnyk.com/">Pravopysnyk</a>,
+        AI grammar correction service for Ukrainian,
+        published research, and worked on cool hardware projects.</p>
+      <p>Currently exploring <a href="https://maksymbondarenko.substack.com/p/the-memory-problem-why-llms-need">LLM memory</a> and AI tools for hardware engineering, and thinking about ways to productize <a href="https://maksymbondarenko.substack.com/p/repair-robotics-manifesto">general robotics</a>.</p>
+    </div>
+  </div>
 
-    <section>
-      <h2>Now</h2>
-      <ul>
-        <li>Research Engineer Intern at Mako Dev — AI-written GPU kernels for model acceleration.</li>
-        <li>Exploring memory enabled reasoning systems.</li>
-        <li>Wokring on tool to make reading research papers more fun.</li>
-      </ul>
-    </section>
+  <!-- TEMPORARILY COMMENTED OUT: Life updates section 
+       See dec3-dev-log.md for plan to implement automatic JSON-based timeline
+  <div id="life-updates" class="section">
+    <h2 class="section-title">Life updates</h2>
+    <div class="timeline">
+      (2025-2018)
+      (Experience boxes)
+    </div>
+  </div>
+  -->
 
-    <section>
-      <h2>Selected projects</h2>
-      <ul>
-        <li><a href="https://github.com/Lenguist/trot-or-rot" target="_blank" rel="noopener">Trot or Rot</a> — Quadruped robot trained with RL.</li>
-        <li><a href="https://github.com/Lenguist/notion-email" target="_blank" rel="noopener">Notion Mail autolabel</a> — Large-scale email autolabeling; cut cost 10×.</li>
-        <li><a href="https://github.com/Lenguist/ai-for-cad" target="_blank" rel="noopener">AI for CAD</a> — AI-assisted circuit design tools.</li>
-        <li><a href="https://github.com/Lenguist/fpga-piano" target="_blank" rel="noopener">FPGA MP3 player</a> — Verilog-based audio player.</li>
-      </ul>
-    </section>
+  <div id="explorations" class="section">
+    <h2 class="section-title">Explorations</h2>
+    <div class="explorations-intro">
+      <p class="exploration-subtitle">Ideas, experiments, and deep dives into things that fascinate me</p>
+    </div>
+    <div class="exploration-list">
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://papertrail-main.vercel.app/" target="_blank" rel="noopener">PaperTrail</a></div>
+        <div class="exploration-desc">making you feel good about papers you read this week.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://gracious-dream-production.up.railway.app/landing" target="_blank" rel="noopener">Telegram Wrapped</a></div>
+        <div class="exploration-desc">flask app that fetches data from your Telegram account; semantic search coming soon.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://github.com/Lenguist/trot-or-rot" target="_blank" rel="noopener">Trot or Rot</a></div>
+        <div class="exploration-desc">full-stack quadruped project, from Fusion360 CAD and PyBullet sim to RL locomotion on real hardware.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://github.com/amirzarandi/comp-arch-project" target="_blank" rel="noopener">Cache Me Out</a></div>
+        <div class="exploration-desc">RISC-V out-of-order processor with custom microarchitecture and FPGA implementation.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://erasedraw.cs.columbia.edu/" target="_blank" rel="noopener">EraseDraw</a></div>
+        <div class="exploration-desc">learning to insert objects into images by first erasing them; CVPR 2024 paper with a fun visual demo.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://github.com/Lenguist/fpga-piano" target="_blank" rel="noopener">FPGA MP3 Player</a></div>
+        <div class="exploration-desc">Xilinx FPGA board wired up as a tiny Verilog-based music player.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://aclanthology.org/2023.unlp-1.13/" target="_blank" rel="noopener">Ukrainian GEC</a></div>
+        <div class="exploration-desc">synthetic-data-heavy grammar correction system for Ukrainian that set a new state of the art.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://github.com/jinyoungkim927/PromptCraft-Robotics-Hackathon" target="_blank" rel="noopener">Flutter</a></div>
+        <div class="exploration-desc">natural-language-driven drone planning that won a 10k hackathon run by Sebastian Thrun.</div>
+      </div>
+      <div class="exploration-row">
+        <div class="exploration-name"><a href="https://devpost.com/software/giraffe-study" target="_blank" rel="noopener">Giraffe.study</a></div>
+        <div class="exploration-desc">hackathon project for auto-generated long-form educational videos.</div>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Writing</h2>
-      <p>Occasional essays on engineering and systems on <a href="https://substack.com/@maksymbondarenko" target="_blank" rel="noopener">Bits &amp; Weights</a>.</p>
-    </section>
+  <div id="random" class="section">
+    <h2 class="section-title">Random</h2>
+    <div class="random-text">
+      <p>For writing, check out my <a href="https://substack.com/@maksymbondarenko">Substack</a>. For everything else—random ideas, experiments, and side quests—you'll probably find traces scattered across my projects and posts.</p>
+      <p><strong>Random facts</strong></p>
+      <p>Competed at the International Linguistics Olympiad.</p>
+      <p>Certified bartender — favorite drink: Negroni.</p>
+      <p>Ran the San Francisco Marathon.</p>
+      <p>Used to do ballroom dancing.</p>
+      <p>Big fan of strategy games (Civilization, Paradox, Chess).</p>
+      <p>I like building robots that look slightly cursed.</p>
+    </div>
+  </div>
 
-    <section>
-      <h2>Random facts</h2>
-      <ul>
-        <li>Competed at the International Linguistics Olympiad.</li>
-        <li>Certified bartender — favorite drink: Negroni.</li>
-        <li>Ran the San Francisco Marathon.</li>
-        <li>Used to do ballroom dancing.</li>
-        <li>Big fan of strategy games (Civilization, Paradox, Chess).</li>
-        <li>I like building robots that look slightly cursed.</li>
-      </ul>
-    </section>
+  <div id="contact" class="section">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-links">
+      <span><a href="https://www.linkedin.com/in/maksym-bondarenko-bb498316a/" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span><a href="https://github.com/Lenguist" target="_blank" rel="noopener">GitHub</a></span>
+      <span><a href="mailto:maksym.d.bondarenko@gmail.com">Email</a></span>
+    </div>
+  </div>
 
-    <footer>
-      <span class="muted">© <span id="y"></span> Maksym Bondarenko</span>
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <div class="cat-container">
+    <a href="https://veronika-kitsul.github.io/" target="_blank" rel="noopener">
+      <pre class="ascii-cat">
+              __..--''``---....___ _..._ __
+/// //_.-'     .-/";   `         ``<._ ``.''_   `. / // /
+///_.-' _..--.'_    \             `             ( ) ) // //
+/ (_..-' // (< _      ;_..__                      ; `' / ///
+/ // // //  `-._,_)' // / ``--...____..-' /// / //
+      </pre>
+    </a>
+  </div>
 </body>
 </html>
