@@ -14,7 +14,7 @@
     <h1><span class="first-name">maksym</span> <span class="last-name">bondarenko</span></h1>
     <pre class="ascii-bar">
 -------------------------------------------
-| <a href="#about-me">About me</a> | <a href="#explorations">Explorations</a> | <a href="#random">Random</a> |
+| <a href="#about-me">About me</a> | <a href="#life-updates">Life</a> | <a href="#explorations">Explorations</a> | <a href="#random">Random</a> |
 -------------------------------------------
     </pre>
   </div>
@@ -38,16 +38,12 @@
     </div>
   </div>
 
-  <!-- TEMPORARILY COMMENTED OUT: Life updates section 
-       See dec3-dev-log.md for plan to implement automatic JSON-based timeline
   <div id="life-updates" class="section">
     <h2 class="section-title">Life updates</h2>
-    <div class="timeline">
-      (2025-2018)
-      (Experience boxes)
+    <div class="life-events" id="life-events-container">
+      <!-- Populated by JavaScript from life-updates.json -->
     </div>
   </div>
-  -->
 
   <div id="explorations" class="section">
     <h2 class="section-title">Explorations</h2>
@@ -128,5 +124,56 @@
       </pre>
     </a>
   </div>
+
+  <script>
+    // Load and display life updates from JSON
+    fetch('life-updates.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('life-events-container');
+        
+        // Sort activities by start date (most recent first)
+        const sorted = [...data.activities].sort((a, b) => {
+          const dateA = a.months_active[0];
+          const dateB = b.months_active[0];
+          return dateB.localeCompare(dateA);
+        });
+        
+        // Format month as "Month YYYY" or just "YYYY" for education
+        function formatDate(monthStr) {
+          const [year, month] = monthStr.split('-');
+          const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          return `${monthNames[parseInt(month) - 1]} ${year}`;
+        }
+        
+        // Build description
+        function buildDescription(activity) {
+          let desc = activity.name;
+          if (activity.position) {
+            desc += `, ${activity.position}`;
+          }
+          return desc;
+        }
+        
+        // Render each event
+        sorted.forEach(activity => {
+          const eventDiv = document.createElement('div');
+          eventDiv.className = 'life-event';
+          
+          const startDate = formatDate(activity.months_active[0]);
+          const description = buildDescription(activity);
+          
+          eventDiv.innerHTML = `<span class="event-date">${startDate}</span> — ${description}`;
+          
+          container.appendChild(eventDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading life updates:', error);
+        document.getElementById('life-events-container').textContent = 
+          'Unable to load life updates.';
+      });
+  </script>
 </body>
 </html>

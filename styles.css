@@ -459,6 +459,25 @@ p a:hover {
   font-weight: bold;
 }
 
+/* Life updates section */
+.life-events {
+  max-width: 700px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
+}
+
+.life-event {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.event-date {
+  color: var(--primary-green);
+  font-weight: 600;
+  font-size: 13px;
+}
+
 /* Random / thoughts section */
 .random-text {
   max-width: 600px;
