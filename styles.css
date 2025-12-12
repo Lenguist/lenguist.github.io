@@ -8,6 +8,7 @@ body {
   position: relative; /* so we can position elements like the cat relative to body */
   background-color: #000000;
   color: #ffffff;
+  overflow-x: hidden; /* prevent horizontal scrolling */
 }
 
 /* Theme colors */
@@ -100,6 +101,7 @@ p a:hover {
 .profile-image {
   width: 400px;
   height: 350px;
+  max-width: 100%;
   object-fit: cover;
   border: 2px dashed var(--primary-green);
   margin-left: 20px;
@@ -486,4 +488,205 @@ p a:hover {
   max-width: 100%;
   overflow-x: auto;
   display: inline-block;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet and below (768px) */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 0 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 10px;
+    gap: 8px;
+  }
+
+  .header h1 {
+    text-align: center;
+  }
+
+  .first-name {
+    font-size: 42px;
+  }
+
+  .last-name {
+    font-size: 20px;
+  }
+
+  .ascii-bar {
+    font-size: 10px;
+    margin-right: 0;
+    margin-top: 5px;
+    width: 100%;
+    overflow-x: auto;
+    text-align: center;
+  }
+
+  .section {
+    margin: 50px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  #about-me {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .profile-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 400 / 350;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  #about-me .text {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .exploration-list {
+    padding: 0 15px;
+  }
+
+  .exploration-row {
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px 0;
+  }
+
+  .exploration-name {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .exploration-desc {
+    font-size: 13px;
+  }
+
+  .exploration-subtitle {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .contact-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .random-text {
+    padding: 0 20px;
+    font-size: 13px;
+  }
+
+  .cat-container {
+    margin: 40px 10px 30px 10px;
+    text-align: center;
+  }
+
+  .ascii-cat {
+    font-size: 8px;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 0 5px;
+  }
+
+  .header {
+    margin: 10px 5px;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .header h1 {
+    text-align: center;
+  }
+
+  .first-name {
+    font-size: 32px;
+  }
+
+  .last-name {
+    font-size: 18px;
+  }
+
+  .ascii-bar {
+    font-size: 9px;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 3px;
+  }
+
+  .section {
+    margin: 40px 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .profile-image {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  #about-me .text {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .indented-quote {
+    font-size: 12px;
+  }
+
+  .exploration-list {
+    padding: 0 10px;
+  }
+
+  .exploration-row {
+    margin: 12px 0;
+  }
+
+  .exploration-name {
+    font-size: 14px;
+  }
+
+  .exploration-desc {
+    font-size: 12px;
+  }
+
+  .exploration-subtitle {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .random-text {
+    padding: 0 15px;
+    font-size: 12px;
+  }
+
+  .cat-container {
+    margin: 30px 5px 20px 5px;
+  }
+
+  .ascii-cat {
+    font-size: 7px;
+  }
 }
