@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sand Tube Clock (p5.js) — Data Vis A0</title>
+    <style>
+      html, body { margin: 0; padding: 0; background: #2a2a2a; }
+      canvas { display: block; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      let tube = {};
+      let grains = [];
+      let lastMinute = null;
+      const MAX_GRAINS = 200;
+      const SPAWN_PER_FRAME = 2;
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        pixelDensity(1);
+        initTube();
+        lastMinute = minute();
+      }
+
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+        initTube();
+      }
+
+      function initTube() {
+        const w = min(width * 0.4, 380);
+        const h = min(height * 0.6, 520);
+        tube.w = w;
+        tube.h = h;
+        tube.x = width * 0.5 - w * 0.5;
+        tube.y = height * 0.58 - h * 0.5;
+        tube.wall = 6;
+        tube.pad = 12;
+        const iw = w - 2 * (tube.wall + tube.pad);
+        const ih = h - 2 * (tube.wall + tube.pad);
+        tube.inner = {
+          x: tube.x + tube.wall + tube.pad,
+          y: tube.y + tube.wall + tube.pad,
+          w: iw,
+          h: ih
+        };
+      }
+
+      function draw() {
+        const m = minute();
+        if (lastMinute !== null && m !== lastMinute) console.log(m);
+        lastMinute = m;
+
+        background(42, 42, 42);
+
+        const h24 = hour();
+        const minVal = minute();
+        const secVal = second();
+        const fillP = constrain((h24 * 60 + minVal) / 1440, 0, 1);
+        const inner = tube.inner;
+        const fillTopY = inner.y + (1 - fillP) * inner.h;
+
+        drawTube();
+        drawSandFill(fillTopY);
+        drawScale(fillTopY, h24, minVal);
+        drawSecondBead(secVal);
+        simulateGrains(fillTopY, secVal);
+      }
+
+      function drawTube() {
+        noStroke();
+        fill(220, 220, 220);
+        rect(tube.x, tube.y, tube.w, tube.h, 0);
+        fill(50, 50, 55);
+        rect(tube.x + tube.wall, tube.y + tube.wall, tube.w - 2 * tube.wall, tube.h - 2 * tube.wall, 0);
+        noFill();
+        stroke(100, 100, 100);
+        strokeWeight(2);
+        rect(tube.x, tube.y, tube.w, tube.h, 0);
+        noStroke();
+        fill(60, 60, 60);
+        textAlign(CENTER, CENTER);
+        textSize(14);
+        text("SAND TUBE CLOCK", tube.x + tube.w * 0.5, tube.y - 16);
+      }
+
+      function drawSandFill(fillTopY) {
+        const inner = tube.inner;
+        const bottomY = inner.y + inner.h;
+        if (fillTopY >= bottomY) return;
+        noStroke();
+        fill(200, 180, 130);
+        rect(inner.x, fillTopY, inner.w, bottomY - fillTopY, 0);
+      }
+
+      function drawScale(fillTopY, h24, minVal) {
+        const inner = tube.inner;
+        const scaleX = tube.x + tube.w + 18;
+        const scaleTop = inner.y;
+        const scaleBottom = inner.y + inner.h;
+
+        stroke(140, 140, 140);
+        strokeWeight(1);
+        line(scaleX, scaleTop, scaleX, scaleBottom);
+
+        textAlign(LEFT, CENTER);
+        textSize(11);
+        for (let i = 0; i <= 24; i++) {
+          const y = lerp(scaleBottom, scaleTop, i / 24);
+          stroke(140, 140, 140);
+          line(scaleX - 8, y, scaleX + 4, y);
+          if (i < 24) {
+            noStroke();
+            fill(180, 180, 180);
+            text(i.toString(), scaleX + 8, y - inner.h / 48);
+            stroke(140, 140, 140);
+          }
+        }
+
+        stroke(255, 255, 255);
+        line(scaleX - 12, fillTopY, scaleX + 6, fillTopY);
+
+        const bandBottom = lerp(scaleBottom, scaleTop, h24 / 24);
+        const bandTop = lerp(scaleBottom, scaleTop, (h24 + 1) / 24);
+        const minuteY = lerp(bandBottom, bandTop, minVal / 60);
+
+        stroke(200, 80, 80);
+        strokeWeight(2);
+        line(scaleX - 12, minuteY, scaleX + 6, minuteY);
+
+        noStroke();
+        fill(200, 100, 100);
+        text("min " + String(minVal).padStart(2, "0"), scaleX + 12, minuteY);
+
+        fill(180, 180, 180);
+        textSize(12);
+        text(String(h24).padStart(2, "0") + ":" + String(minVal).padStart(2, "0") + ":" + String(second()).padStart(2, "0"), tube.x + tube.w * 0.5 - 22, tube.y + tube.h + 14);
+      }
+
+      function drawSecondBead(secVal) {
+        const inner = tube.inner;
+        const beadX = tube.x - 20;
+        const beadY = lerp(inner.y + inner.h, inner.y, secVal / 59);
+
+        stroke(120, 120, 120);
+        strokeWeight(1);
+        line(beadX + 8, inner.y, beadX + 8, inner.y + inner.h);
+        noStroke();
+        fill(100, 140, 180);
+        circle(beadX, beadY, 8);
+        fill(160, 160, 160);
+        textAlign(RIGHT, CENTER);
+        text("sec " + String(secVal).padStart(2, "0"), beadX - 10, beadY);
+      }
+
+      function simulateGrains(fillTopY, secVal) {
+        const inner = tube.inner;
+        const rate = SPAWN_PER_FRAME + Math.floor(map(secVal, 0, 59, 0, 3));
+        for (let i = 0; i < rate; i++) spawnGrain();
+
+        const bottomY = inner.y + inner.h;
+        const leftX = inner.x;
+        const rightX = inner.x + inner.w;
+
+        for (let i = grains.length - 1; i >= 0; i--) {
+          const g = grains[i];
+          g.vy += 0.1;
+          g.vx *= 0.99;
+          g.vy *= 0.99;
+          g.x += g.vx;
+          g.y += g.vy;
+
+          if (g.x < leftX + 2) { g.x = leftX + 2; g.vx *= -0.5; }
+          if (g.x > rightX - 2) { g.x = rightX - 2; g.vx *= -0.5; }
+
+          if (g.y >= fillTopY - random(0, 2)) {
+            if (fillTopY < bottomY - 2) { grains.splice(i, 1); continue; }
+          }
+          if (g.y > bottomY + 30) { grains.splice(i, 1); continue; }
+        }
+
+        while (grains.length > MAX_GRAINS) grains.shift();
+
+        noStroke();
+        fill(210, 190, 140);
+        for (const g of grains) circle(g.x, g.y, g.sz);
+      }
+
+      function spawnGrain() {
+        const inner = tube.inner;
+        const bw = inner.w * 0.2;
+        grains.push({
+          x: inner.x + inner.w * 0.5 + random(-bw, bw),
+          y: inner.y - 12 + random(-6, 6),
+          vx: random(-0.3, 0.3),
+          vy: random(0.15, 0.6),
+          sz: random(1.2, 2)
+        });
+      }
+    </script>
+  </body>
+</html>
