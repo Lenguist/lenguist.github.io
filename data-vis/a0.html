@@ -15,14 +15,16 @@
       let tube = {};
       let grains = [];
       let lastMinute = null;
-      const MAX_GRAINS = 200;
-      const SPAWN_PER_FRAME = 2;
+      let lastGrainTime = 0;
+      const MAX_GRAINS = 1;
+      const GRAIN_INTERVAL = 800;
 
       function setup() {
         createCanvas(windowWidth, windowHeight);
         pixelDensity(1);
         initTube();
         lastMinute = minute();
+        lastGrainTime = millis();
       }
 
       function windowResized() {
@@ -54,6 +56,12 @@
         if (lastMinute !== null && m !== lastMinute) console.log(m);
         lastMinute = m;
 
+        const currentTime = millis();
+        if (currentTime - lastGrainTime >= GRAIN_INTERVAL && grains.length === 0) {
+          spawnGrain();
+          lastGrainTime = currentTime;
+        }
+
         background(42, 42, 42);
 
         const h24 = hour();
@@ -80,11 +88,24 @@
         stroke(100, 100, 100);
         strokeWeight(2);
         rect(tube.x, tube.y, tube.w, tube.h, 0);
+        
+        const h24 = hour();
+        const minVal = minute();
+        const secVal = second();
+        const currentSeconds = h24 * 3600 + minVal * 60 + secVal;
+        const deadlineSeconds = 23 * 3600;
+        let secondsUntilDeadline;
+        if (currentSeconds < deadlineSeconds) {
+          secondsUntilDeadline = deadlineSeconds - currentSeconds;
+        } else {
+          secondsUntilDeadline = (24 * 3600) - currentSeconds + deadlineSeconds;
+        }
+        
         noStroke();
-        fill(60, 60, 60);
+        fill(255, 0, 0);
         textAlign(CENTER, CENTER);
-        textSize(14);
-        text("SAND TUBE CLOCK", tube.x + tube.w * 0.5, tube.y - 16);
+        textSize(12);
+        text(secondsUntilDeadline + " seconds left until the deadline", tube.x + tube.w * 0.5, tube.y - 16);
       }
 
       function drawSandFill(fillTopY) {
@@ -94,6 +115,16 @@
         noStroke();
         fill(200, 180, 130);
         rect(inner.x, fillTopY, inner.w, bottomY - fillTopY, 0);
+        
+        const deadlineY = lerp(inner.y + inner.h, inner.y, 23 / 24);
+        stroke(255, 0, 0);
+        strokeWeight(3);
+        line(tube.x, deadlineY, tube.x + tube.w, deadlineY);
+        noStroke();
+        fill(255, 0, 0);
+        textAlign(CENTER, CENTER);
+        textSize(12);
+        text("DEADLINE", tube.x + tube.w * 0.5, deadlineY - 16);
       }
 
       function drawScale(fillTopY, h24, minVal) {
@@ -158,12 +189,10 @@
 
       function simulateGrains(fillTopY, secVal) {
         const inner = tube.inner;
-        const rate = SPAWN_PER_FRAME + Math.floor(map(secVal, 0, 59, 0, 3));
-        for (let i = 0; i < rate; i++) spawnGrain();
-
         const bottomY = inner.y + inner.h;
         const leftX = inner.x;
         const rightX = inner.x + inner.w;
+        const topY = inner.y;
 
         for (let i = grains.length - 1; i >= 0; i--) {
           const g = grains[i];
@@ -173,16 +202,16 @@
           g.x += g.vx;
           g.y += g.vy;
 
-          if (g.x < leftX + 2) { g.x = leftX + 2; g.vx *= -0.5; }
-          if (g.x > rightX - 2) { g.x = rightX - 2; g.vx *= -0.5; }
+          if (g.y >= topY && g.y <= bottomY) {
+            if (g.x < leftX + 2) { g.x = leftX + 2; g.vx *= -0.5; }
+            if (g.x > rightX - 2) { g.x = rightX - 2; g.vx *= -0.5; }
+          }
 
-          if (g.y >= fillTopY - random(0, 2)) {
+          if (g.y >= fillTopY - random(0, 2) && g.y <= bottomY) {
             if (fillTopY < bottomY - 2) { grains.splice(i, 1); continue; }
           }
           if (g.y > bottomY + 30) { grains.splice(i, 1); continue; }
         }
-
-        while (grains.length > MAX_GRAINS) grains.shift();
 
         noStroke();
         fill(210, 190, 140);
@@ -190,14 +219,13 @@
       }
 
       function spawnGrain() {
-        const inner = tube.inner;
-        const bw = inner.w * 0.2;
+        const bw = tube.w * 0.3;
         grains.push({
-          x: inner.x + inner.w * 0.5 + random(-bw, bw),
-          y: inner.y - 12 + random(-6, 6),
+          x: tube.x + tube.w * 0.5 + random(-bw, bw),
+          y: tube.y - 30 + random(-10, 10),
           vx: random(-0.3, 0.3),
           vy: random(0.15, 0.6),
-          sz: random(1.2, 2)
+          sz: random(6, 8)
         });
       }
     </script>
