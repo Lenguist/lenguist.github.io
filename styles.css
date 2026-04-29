@@ -1,5 +1,5 @@
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -109,23 +109,23 @@ p a:hover {
 
 #about-me {
   display: flex;
-  width: 90%;
-  text-align: justify;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0 20px;
 }
 
 #about-me .text {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
   padding: 12px;
   padding-left: 60px;
 }
 
 .indented-quote {
-  margin: 5px 0;
-  padding: 0;
-  font-size: 13px;
+  margin: 6px 0;
+  padding: 0 0 0 32px;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.4;
   color: var(--primary-green);
   font-style: italic;
 }
@@ -469,6 +469,11 @@ p a:hover {
   font-size: 14px;
 }
 
+.random-text .facts p {
+  padding-left: 24px;
+  margin: 4px 0;
+}
+
 /* Cat ASCII link at bottom */
 .cat-container {
   margin: 60px 20px 40px 20px;
@@ -538,6 +543,7 @@ p a:hover {
 
   #about-me {
     flex-direction: column;
+    margin: 0;
     width: 100%;
     align-items: center;
   }
@@ -553,7 +559,7 @@ p a:hover {
 
   #about-me .text {
     padding: 12px 20px;
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .exploration-list {
@@ -649,11 +655,11 @@ p a:hover {
 
   #about-me .text {
     padding: 10px 15px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .indented-quote {
-    font-size: 12px;
+    font-size: 12.5px;
   }
 
   .exploration-list {
