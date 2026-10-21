@@ -5,6 +5,8 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   position: relative; /* so we can position the cat relative to body */
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .header {
