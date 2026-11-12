@@ -1,17 +1,4 @@
-body {
-  font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
-  font-weight: 500;
-  margin: 0;
-  padding: 0;
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative; /* so we can position elements like the cat relative to body */
-  background-color: #000000;
-  color: #ffffff;
-  overflow-x: hidden; /* prevent horizontal scrolling */
-}
-
-/* Theme colors */
+/* Theme colors and layout tokens */
 :root {
   --primary-green: #00f900;
   --accent-green: #00cc00;
@@ -20,18 +7,35 @@ body {
   --black: #000000;
   --gray: #333333;
   --light-gray: #666666;
+  --mid-gray: #8a8a8a;
+
+  /* One content column for the whole page: every section shares these edges */
+  --page-width: 1000px;
+  --gutter: 20px;
+}
+
+body {
+  font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+  font-weight: 500;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  max-width: var(--page-width);
+  position: relative;
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden; /* prevent horizontal scrolling */
 }
 
 .header {
   display: flex;
   align-items: flex-end; /* align bottom of elements */
   justify-content: space-between;
-  margin: 20px;
-  flex-wrap: nowrap; /* prevent wrapping */
+  margin: 20px 0;
+  flex-wrap: nowrap;
 }
 
 .header h1 {
-  white-space: nowrap; /* keep name on one line */
+  white-space: nowrap;
   margin: 0;
 }
 
@@ -53,8 +57,7 @@ body {
   font-family: monospace;
   font-size: 12px;
   color: var(--light-gray);
-  /* pre tag is used, so whitespace is preserved by default */
-  margin-right: 20px;
+  margin: 0;
   line-height: 1.2;
   overflow-x: hidden;
   display: block;
@@ -74,15 +77,19 @@ body {
 }
 
 .section {
-  margin: 80px 0;
+  margin: 96px 0;
 }
 
+/* Section headers sit on the left edge, on a rule that spans the column */
 .section-title {
   font-family: 'Goldman', sans-serif;
   font-size: 30px;
-  margin-bottom: 20px;
-  text-align: center;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 12px;
+  text-align: left;
   color: var(--primary-green);
+  border-bottom: 1px solid var(--primary-green);
 }
 
 p a {
@@ -95,29 +102,32 @@ p a {
 p a:hover {
   color: var(--accent-green);
   border-bottom: 1px solid var(--accent-green);
-  font-weight: bold;
+}
+
+/* About */
+#about-me {
+  display: flex;
+  gap: 48px;
+  margin-top: 40px;
 }
 
 .profile-image {
+  flex-shrink: 0;
   width: 400px;
   height: 350px;
   max-width: 100%;
   object-fit: cover;
   border: 2px dashed var(--primary-green);
-  margin-left: 20px;
-}
-
-#about-me {
-  display: flex;
-  margin: 0 20px;
 }
 
 #about-me .text {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.45;
-  padding: 12px;
-  padding-left: 60px;
+}
+
+#about-me .text > :first-child {
+  margin-top: 0;
 }
 
 .indented-quote {
@@ -380,12 +390,281 @@ p a:hover {
   grid-row: 23 / span 2; /* Apr–May 2024 */
 }
 
-/* Contact Links */
+/* Explorations: one project per row, split by rules */
+.explorations-intro {
+  margin: 12px 0 0 0;
+}
+
+.exploration-subtitle {
+  font-size: 14px;
+  color: var(--mid-gray);
+  font-style: italic;
+  margin: 0;
+}
+
+.project-list {
+  margin-top: 4px;
+}
+
+/* The section title's rule already separates the first row */
+.project:first-child {
+  border-top: none;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 240px;
+  gap: 40px;
+  align-items: start;
+  padding: 28px 0;
+  border-top: 1px solid var(--gray);
+}
+
+.project:last-child {
+  border-bottom: 1px solid var(--gray);
+}
+
+.project-name {
+  color: var(--primary-green);
+  font-family: 'Goldman', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.project-name a {
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-name a:hover {
+  color: var(--accent-green);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.project-tagline {
+  margin: 8px 0 0 0;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.project-meta {
+  margin: 10px 0 0 0;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+
+.project-desc {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.project-sub {
+  list-style: none;
+  margin: 14px 0 0 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #cfcfcf;
+}
+
+.project-sub li {
+  padding-left: 16px;
+  text-indent: -16px;
+  margin: 8px 0;
+}
+
+.project-sub li::before {
+  content: "> ";
+  color: var(--primary-green);
+}
+
+.project-sub-name {
+  color: var(--primary-green);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.project-sub-name {
+  border-bottom: 1px dotted var(--accent-green);
+}
+
+a.project-sub-name:hover {
+  border-bottom-style: solid;
+}
+
+.project-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  color: var(--light-gray);
+  text-decoration: none;
+  border: 1px dashed var(--dark-green);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.project-media:hover {
+  border-color: var(--primary-green);
+}
+
+.project-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-media-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--light-gray);
+  /* faint dot grid, like graph paper on a terminal */
+  background-image: radial-gradient(circle, #1c3a1c 1px, transparent 1.2px);
+  background-size: 14px 14px;
+  background-position: center;
+}
+
+.project-media-empty::before {
+  content: "";
+  width: 34px;
+  height: 34px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23008800' stroke-width='1.2' stroke-linecap='square'%3E%3Crect x='3' y='4' width='18' height='16'/%3E%3Ccircle cx='9' cy='9.5' r='1.6'/%3E%3Cpath d='M3 17l5-5 4 4 3-3 6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.project-media:hover .project-media-empty {
+  color: var(--primary-green);
+}
+
+/* Publications */
+.pub-list {
+  list-style: none;
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+.pub {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 40px;
+  padding: 24px 0;
+  border-top: 1px solid var(--gray);
+}
+
+.pub:first-child {
+  border-top: none;
+}
+
+.pub:last-child {
+  border-bottom: 1px solid var(--gray);
+}
+
+.pub p {
+  margin: 0;
+}
+
+.pub-venue {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  padding-top: 3px;
+}
+
+.pub-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.pub-title a {
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--light-gray);
+  transition: all 0.3s ease;
+}
+
+.pub-title a:hover {
+  color: var(--primary-green);
+  border-bottom-color: var(--primary-green);
+}
+
+.pub-authors {
+  margin-top: 6px !important;
+  font-size: 13px;
+  font-weight: 400;
+  color: #cfcfcf;
+}
+
+.pub-authors .me {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.pub-note {
+  margin-top: 4px !important;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--mid-gray);
+}
+
+.pub-links {
+  margin-top: 8px !important;
+  font-size: 13px;
+}
+
+.pub-links a {
+  color: var(--primary-green);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.pub-links a:hover {
+  text-decoration: underline;
+}
+
+/* Random */
+.random-text {
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.random-text > p:first-child {
+  margin-top: 0;
+}
+
+.random-text .facts p {
+  padding-left: 24px;
+  margin: 4px 0;
+}
+
+/* Contact */
 .contact-links {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
-  margin: auto;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin-top: 24px;
+  font-size: 15px;
 }
 
 .contact-links a {
@@ -395,88 +674,12 @@ p a:hover {
 }
 
 .contact-links a:hover {
-  font-weight: bold;
+  border-bottom-style: solid;
 }
 
-/* Simple research / explorations sections adapted from the Flask app */
-.research-intro-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.research-text {
-  max-width: 700px;
-  padding: 20px;
-  text-align: justify;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.explorations-intro {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.exploration-subtitle {
-  font-size: 18px;
-  color: var(--light-gray);
-  font-style: italic;
-  margin: 0;
-}
-
-.exploration-list {
-  max-width: 700px;
-  margin: 20px auto 0 auto;
-  padding: 0 20px;
-}
- 
-.exploration-row {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  margin: 10px 0;
-}
-
-.exploration-name {
-  min-width: 180px;
-  font-weight: 600;
-}
-
-.exploration-desc {
-  flex: 1;
-  font-size: 14px;
-}
-
-.exploration-list a {
-  color: var(--primary-green);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--accent-green);
-  transition: all 0.3s ease;
-}
-
-.exploration-list a:hover {
-  color: var(--accent-green);
-  border-bottom: 1px solid var(--accent-green);
-  font-weight: bold;
-}
-
-/* Random / thoughts section */
-.random-text {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 14px;
-}
-
-.random-text .facts p {
-  padding-left: 24px;
-  margin: 4px 0;
-}
-
-/* Cat ASCII link at bottom */
+/* Cat ASCII link at bottom, on the right edge of the column */
 .cat-container {
-  margin: 60px 20px 40px 20px;
+  margin: 60px 0 40px 0;
   text-align: right;
 }
 
@@ -493,27 +696,36 @@ p a:hover {
   max-width: 100%;
   overflow-x: auto;
   display: inline-block;
+  margin: 0;
 }
 
 /* ============================================
-   MOBILE RESPONSIVE STYLES
+   RESPONSIVE
    ============================================ */
+
+/* Narrow desktop / tablet: image drops below the description */
+@media screen and (max-width: 900px) {
+  .project {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 16px 32px;
+  }
+
+  .project-media {
+    grid-column: 2;
+    max-width: 360px;
+  }
+}
 
 /* Tablet and below (768px) */
 @media screen and (max-width: 768px) {
-  body {
-    padding: 0 10px;
+  :root {
+    --gutter: 16px;
   }
 
   .header {
     flex-direction: column;
-    align-items: center;
-    margin: 15px 10px;
+    align-items: flex-start;
     gap: 8px;
-  }
-
-  .header h1 {
-    text-align: center;
   }
 
   .first-name {
@@ -526,15 +738,12 @@ p a:hover {
 
   .ascii-bar {
     font-size: 10px;
-    margin-right: 0;
-    margin-top: 5px;
     width: 100%;
     overflow-x: auto;
-    text-align: center;
   }
 
   .section {
-    margin: 50px 0;
+    margin: 64px 0;
   }
 
   .section-title {
@@ -543,64 +752,44 @@ p a:hover {
 
   #about-me {
     flex-direction: column;
-    margin: 0;
-    width: 100%;
-    align-items: center;
+    gap: 24px;
   }
 
   .profile-image {
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     height: auto;
     aspect-ratio: 400 / 350;
-    margin-left: 0;
-    margin-bottom: 20px;
   }
 
-  #about-me .text {
-    padding: 12px 20px;
-    font-size: 15px;
+  .project {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 22px 0;
   }
 
-  .exploration-list {
-    padding: 0 15px;
-  }
-
-  .exploration-row {
-    flex-direction: column;
+  .pub {
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px;
-    margin: 15px 0;
+    padding: 20px 0;
   }
 
-  .exploration-name {
-    min-width: auto;
-    width: 100%;
+  .project-media {
+    grid-column: 1;
+    max-width: none;
   }
 
-  .exploration-desc {
-    font-size: 13px;
+  /* No image yet: skip the empty box on small screens */
+  .project-media:has(.project-media-empty) {
+    display: none;
   }
 
-  .exploration-subtitle {
-    font-size: 16px;
-    padding: 0 15px;
-  }
-
-  .contact-links {
-    width: 100%;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
-
-  .random-text {
-    padding: 0 20px;
-    font-size: 13px;
+  .project-name {
+    font-size: 20px;
   }
 
   .cat-container {
-    margin: 40px 10px 30px 10px;
-    text-align: center;
+    text-align: left;
   }
 
   .ascii-cat {
@@ -610,22 +799,8 @@ p a:hover {
 
 /* Mobile phones (480px and below) */
 @media screen and (max-width: 480px) {
-  body {
-    padding: 0 5px;
-  }
-
-  .header {
-    margin: 10px 5px;
-    gap: 5px;
-    align-items: center;
-  }
-
-  .header h1 {
-    text-align: center;
-  }
-
   .first-name {
-    font-size: 32px;
+    font-size: 34px;
   }
 
   .last-name {
@@ -635,64 +810,31 @@ p a:hover {
   .ascii-bar {
     font-size: 9px;
     line-height: 1.4;
-    text-align: center;
-    margin-top: 3px;
   }
 
   .section {
-    margin: 40px 0;
+    margin: 48px 0;
   }
 
   .section-title {
     font-size: 20px;
-    margin-bottom: 15px;
-  }
-
-  .profile-image {
-    max-width: 100%;
-    margin-bottom: 15px;
   }
 
   #about-me .text {
-    padding: 10px 15px;
     font-size: 14px;
   }
 
   .indented-quote {
     font-size: 12.5px;
+    padding-left: 20px;
   }
 
-  .exploration-list {
-    padding: 0 10px;
-  }
-
-  .exploration-row {
-    margin: 12px 0;
-  }
-
-  .exploration-name {
-    font-size: 14px;
-  }
-
-  .exploration-desc {
-    font-size: 12px;
-  }
-
-  .exploration-subtitle {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
+  .project-desc,
   .random-text {
-    padding: 0 15px;
-    font-size: 12px;
-  }
-
-  .cat-container {
-    margin: 30px 5px 20px 5px;
+    font-size: 13px;
   }
 
   .ascii-cat {
-    font-size: 7px;
+    font-size: 6px;
   }
 }

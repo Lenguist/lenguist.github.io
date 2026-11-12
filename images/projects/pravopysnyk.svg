@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#5382EB"/>
+  <!-- Pravopysnyk logo mark (from pravopysnyk.com), scaled 8x and centered -->
+  <g transform="translate(316 146) scale(8)">
+    <path d="M15.237.5H0v25h5.415V5.632h9.822V25.5h5.415V5.632h-5.415V.5Z" fill="#fff"/>
+    <path d="M15.237.5v5.132h5.415L15.237.5Z" fill="#324E8E"/>
+  </g>
+</svg>
