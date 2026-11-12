@@ -874,3 +874,47 @@ a.project-sub-name:hover {
     font-size: 6px;
   }
 }
+
+/* ============================================
+   PRINT: keep green on black, fit on two pages
+   ============================================ */
+@page {
+  size: letter;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #000 !important;
+  }
+
+  html {
+    zoom: 0.62;
+  }
+
+  body {
+    max-width: none;
+    padding: 28px 44px;
+  }
+
+  .section { margin: 34px 0; }
+  .header { margin: 0 0 16px 0; }
+  #about-me { margin-top: 16px; gap: 36px; }
+  .profile-image { width: 300px; height: 262px; }
+
+  .project { padding: 16px 0; gap: 32px; }
+  .project, .pub { break-inside: avoid; }
+  .pub { padding: 14px 0; }
+  .section-title { break-after: avoid; }
+
+  /* print the green outlines, not the colour images (print reports "no hover") */
+  .project-media.stylized img { opacity: 0 !important; }
+  .project-media canvas.stylize { display: block !important; opacity: 1 !important; }
+
+  /* links stay green, no URLs appended */
+  a { text-decoration: none; }
+
+  .cat-container { margin: 20px 0 0 0; }
+}
